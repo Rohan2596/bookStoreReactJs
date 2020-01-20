@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../dashboardComponent/dashboard.css';
 import './allBooks.css'
+import {withRouter} from 'react-router-dom';
 
-export default class AllBooks extends Component {
+class AllBooks extends Component {
    render() {
       console.log("received data from dashboard", this.props);
       var Books = this.props.getAllBooksData.map((item, i) => {
@@ -41,4 +42,8 @@ export default class AllBooks extends Component {
          
       )
    }
+   onSubmit=()=>{
+      this.props.history.push('/customer')
+   }
 }
+export default withRouter(AllBooks);
