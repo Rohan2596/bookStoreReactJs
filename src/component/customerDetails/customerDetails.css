@@ -35,13 +35,13 @@
     height: 38px;
     background-color: #3371b5;
     color: white;
-    /* justify-content: center; */
     text-align: center;
     padding-top: 9px;
     font-weight: 400;
     border-radius: 2px;
     margin-top: 45px;
     margin-right: 2%;
+    cursor:pointer;
 }
 .address{
     margin-bottom: 2%;

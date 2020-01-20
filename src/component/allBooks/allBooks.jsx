@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import '../dashboardComponent/dashboard.css';
 import './allBooks.css'
+import { withRouter } from 'react-router-dom';
+class AllBooks extends Component {
+   constructor(props) {
+      super(props);
 
-export default class AllBooks extends Component {
+      this.onSubmit = this.onSubmit.bind(this);
+      this.state = {
+         item: null
+      }
+   };
    render() {
-      console.log("received data from dashboard", this.props);
       var Books = this.props.getAllBooksData.map((item, i) => {
-         console.log("keys" + JSON.stringify(item));
-
          return (
-            (i+1) % 5 === 0 ? <br /> :
+
             <div className="div">
                <div className='card' >
                   <div className='imageSpace' >
@@ -18,13 +23,10 @@ export default class AllBooks extends Component {
                   <div className='bookName'>{item.title}</div>
                   <div className='authorName'>{item.author}</div>
                   <div className='bookName'>Rs.{item.price}</div>
-                  <div className='buttonBuyNow' onClick={this.onSubmit}  >BUY NOW</div>
-                  </div>
+                  <button className='buttonBuyNow' onClick={() => this.onSubmit(item)} >BUY NOW</button>
                </div>
-               
-              
+            </div>
          )
-
       })
       return (
          <div className='subMain'>
@@ -34,11 +36,15 @@ export default class AllBooks extends Component {
                   <div>
                      {Books}
                   </div>
-
                </div>
             </div>
          </div>
-         
       )
    }
+
+   onSubmit(item) {
+      this.setState({ item: item });
+      this.props.history.push('/customer')
+   }
 }
+export default withRouter(AllBooks); 
