@@ -73,9 +73,7 @@ class CustomerDetails extends Component {
     }
 
     render() {
-
         return (
-
             <div className='main'>
                 <div className='upper'>
                     <div className='dashboard'>
@@ -151,6 +149,17 @@ class CustomerDetails extends Component {
                                 {/* /> */}
 
 
+                                <FormControlLabel
+                                    // value="bottom"
+                                    // control={<Radio color="primary" />}
+                                    // label="Other"
+                                    // labelPlacement="end"
+                                    value="Other"
+                                    // checked={this.state.radio === 'Other'}
+                                    onChange={(event) => this.handleValueChange(event)}
+                                    control={<Radio  />}
+                                    label="Other" />
+                                {/* /> */}
                             </RadioGroup>
                         </FormControl>
 

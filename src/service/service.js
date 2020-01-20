@@ -21,4 +21,15 @@ export default class Service {
                 return result;
             });
     }
+    customerDetails(body){
+        return Axios({
+            method: 'POST',
+            url: 'http://localhost:3000/customerDetails',
+            data: body
+        })
+            .then(result => {
+                return result;
+            });
+
+    }
 }  
