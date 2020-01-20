@@ -44,3 +44,30 @@
     height: 139px;
     text-align: center;
 }
+.orderInfoParagraph{
+    font-size: 14;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+}
+.tableDiv{
+    width: 50%;
+   
+}
+.table{
+    border: 1 solid grey;
+}
+.MuiTableCell-root {
+    display: table-cell;
+    padding: 16px;
+    font-size: 0.875rem;
+    text-align: left;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    border: 1px solid rgb(224, 224, 224);
+    letter-spacing: 0.01071em;
+    vertical-align: inherit;
+}
+.headerTableRow{
+    background-color: dimgrey;
+}

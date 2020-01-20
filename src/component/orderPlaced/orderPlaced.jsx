@@ -1,35 +1,48 @@
-import React, { Component } from 'react';
-import './orderPlaced.css'
+import React, { Component } from "react";
+import './orderPlaced.css';
+import Button from '@material-ui/core/Button';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableRow from '@material-ui/core/TableRow';
+import oredrPlacedImage from './success-Order-confirmed-and-passed.jpg'
+
 class OrderPlaced extends Component {
     render() {
         return (
-            <div className='main'>
-                <div className='upper'>
-                    <div className='dashboard'>
-                        <div className='logo'>
-                            <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="Smiley face" />
-                        </div>
-                        <div className='title'>Bookstore</div>
-                        <div className='search'>Search</div>
-                    </div>
+            <div align="center" >
+                <div align="center">
+                    <img src={oredrPlacedImage} height="300" width="300" />
                 </div>
-                <div className='subOrder'>
-                    <div className='orderTitle' style={{ width: '100%' }} >Order Placed SuccessFully</div>
-                    <div className='para'><p>Hurray!!!your order is confirmed the order is #1234 save the order id for
-                 further communication</p></div>
+                <div>
+                    <p className="orderInfoParagraph">hurray!!! your order is confirmed</p>
+                    <p className="orderInfoParagraph">the order id is #123456, save the order id for</p>
+                    <p className="orderInfoParagraph">further communication</p>
                 </div>
-                <div className='details'>
-                    <div className='tableTitle'>
-                        <div style={{ width: '33%', textAlign: 'center', marginTop: '0.25%', paddingTop: '0.75%' }}>Email us</div>
-                        <div style={{ width: '33%', textAlign: 'center', marginTop: '0.25%', paddingTop: '0.75%' }}>Contact us</div>
-                        <div style={{ width: '33%', textAlign: 'center', marginTop: '0.25%', paddingTop: '0.75%' }}>Address</div>
-                    </div>
-                    <div className='subDetails'>
-                        <div style={{ width: '33%', textAlign: 'center', borderRight: '1px solid gray', paddingTop: '2%' }}>admin@bookstore.com</div>
-                        <div style={{ width: '33%', textAlign: 'center', borderRight: '1px solid gray', paddingTop: '2%' }}>+91 7894561230</div>
-                        <div style={{ width: '33%', textAlign: 'center', paddingTop: '2%' }}>Bridgelabz solutions LLP,Malhotra Chambers, First Floor, Govandi East, Mumbai, Maharashtra 400088</div>
-                    </div>
+
+                <div className="tableDiv" align="center">
+                    <TableContainer width="700px"  className="table">
+                        <Table className="table">
+                            <TableBody>
+                                <TableRow className="headerTableRow">
+                                    <TableCell className="tableCellLeft"><p className="orderInfoParagraph">Email Us</p></TableCell>
+                                    <TableCell className="center"><p className="orderInfoParagraph">Contact Us</p></TableCell>
+                                    <TableCell className="tableCellRight"><p className="orderInfoParagraph">Address</p></TableCell>
+                                </TableRow>
+                                <TableRow className="TableRow" >
+                                    <TableCell className="tableCellLeft"><p className="orderInfoParagraph">admin@bookstore.com</p></TableCell>
+                                    <TableCell className="tableCellLeft"><p className="orderInfoParagraph">+91 8163475881</p></TableCell>
+                                    <TableCell className="tableCellLeft"><p className="orderInfoParagraph">41,14th main,15th cross, sector 4,Opp BDA <br /> complex,near kumarakom resturant HSR layout<br /> Banglore 560034</p></TableCell>
+                                </TableRow>
+
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
+                <Button variant="contained" className="button" color="primary" >
+                    Continue Shopping
+                </Button>
             </div>
         );
     }

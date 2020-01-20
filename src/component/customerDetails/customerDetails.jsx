@@ -64,7 +64,7 @@ class CustomerDetails extends Component {
                         <div className='customerDetails'>CustomerDetails</div>
                         <div className='content'>
                             <div className='name'>
-                                <TextField id="outlined-basic" label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" label="Name" name="Name" variant="outlined" />
                             </div>
                             <div className='phonenumber'>
                                 <TextField id="outlined-basic" label="Phone Number" name="Phone_Number" variant="outlined" value={this.state.Phone_Number} onChange={(event) => this.handleValueChange(event)} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
