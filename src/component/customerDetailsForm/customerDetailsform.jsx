@@ -22,7 +22,8 @@ class customerDetailsForm extends Component {
             Address: '',
             city: '',
             LandMark: '',
-            formfilled:false
+            formfilled:false,
+            divHide:false
         };
 
     }
@@ -55,6 +56,7 @@ class customerDetailsForm extends Component {
             };
             console.log(body);
           console.log(this.setState({formfilled:!this.state.formfilled}));
+          this.setState({divHide:!this.state.divHide})
             
             
             // this.setState({
@@ -142,8 +144,11 @@ class customerDetailsForm extends Component {
                     {/* </fieldset> */}
                     <div className='button'><Button  style={{ paddingLeft: '5%', paddingRight: '5%' }} onClick={this.handleLogin} variant="contained" color="primary">done</Button></div>
                 </form>
-                <div className='lastDiv'><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div></div>
-            </div>
+                <div className='lastDiv' style={{height:'auto'}}><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div>
+                <div style={{display:this.state.divHide ? 'block':'none'}}>
+                <div style={{ paddingTop: '11%' ,marginLeft: '-14%'}}> <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="abc"></img></div>
+                <div style={{textAlign:"center"}}><p>dont make yuyuu</p></div></div>
+            </div></div>
         )
     }
 }

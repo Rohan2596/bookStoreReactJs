@@ -21,7 +21,8 @@ class CustomerDetails extends Component {
             city: '',
             LandMark: '',
             formfilled: false,
-            hidden:false
+            hidden:false,
+            divHide:false
         };
 
     }
@@ -39,6 +40,7 @@ class CustomerDetails extends Component {
     handleLogin = (e) => {
         this.setState({ formfilled: !this.state.formfilled });
         this.setState({hidden:!this.state.hidden});
+        this.setState({divHide:!this.state.divHide})
         const details = {
             Name: this.state.Name,
             Phone_Number: this.state.Phone_Number,
@@ -70,9 +72,11 @@ class CustomerDetails extends Component {
                 <div className='subMain'>
                     <div className='lowerP' style={{ height: '530px' }}>
                         <div className='customerDetails'>CustomerDetails</div>
-                        <Button component="span" 
+
+                        <Button  component="span" 
                         style={{ marginLeft: "90%", display: this.state.hidden ? 'block' : 'none'}} 
-                         
+                    
+    
                          onClick={this.editDetails}>Edit</Button>
                         <div className='content'>
                             <div className='name'>
@@ -137,17 +141,18 @@ class CustomerDetails extends Component {
                             </RadioGroup>
                         </FormControl> 
 
-                        <div className='continue' style={{ float: 'right' }} onClick={this.handleLogin} >CONTINUE</div>
-
-
-
+                        <div className='continue'  onClick={this.handleLogin} >CONTINUE</div>
                     </div>
-                    <div className='lowerP'>
-                        Order summary
                     </div>
-                </div>
+                    <div className='lastDiv' style={{height:'auto'}}><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div>
+                <div style={{display:this.state.divHide ? 'block':'none'}}>
+                <div style={{ paddingTop: '11%' ,marginLeft: '-14%'}}> <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="abc"></img></div>
+                <div style={{textAlign:"center"}}><p>dont make yuyuu</p></div></div>
+            </div></div>
+                   
+                
 
-            </div>
+            
         );
     }
 }
