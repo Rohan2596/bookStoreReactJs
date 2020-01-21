@@ -7,7 +7,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import axios from 'axios';
+import service from '../../service/service'
 
 class CustomerDetails extends Component {
     constructor(props) {
@@ -20,12 +20,13 @@ class CustomerDetails extends Component {
             Address: '',
             city: '',
             LandMark: '',
-            formfilled:false
+            formfilled: false,
+            hidden:false
         };
 
     }
-    editDetails=()=>{
-        this.setState({formfilled:!this.state.formfilled});
+    editDetails = () => {
+        this.setState({ formfilled: !this.state.formfilled });
     }
     handleValueChange = (event) => {
 
@@ -36,9 +37,9 @@ class CustomerDetails extends Component {
     }
 
     handleLogin = (e) => {
-        console.log(this.setState({formfilled:!this.state.formfilled}));
-
-        const body = {
+        this.setState({ formfilled: !this.state.formfilled });
+        this.setState({hidden:!this.state.hidden});
+        const details = {
             Name: this.state.Name,
             Phone_Number: this.state.Phone_Number,
             Pincode: this.state.Pincode,
@@ -49,27 +50,9 @@ class CustomerDetails extends Component {
             Type: this.state.Type
 
         };
-        console.log(body);
-
-        // this.setState({
-        //     Name: '', 
-        //     Phone_Number: '', 
-        //     PinCode: '',
-        //     Locality:'',
-        //     Email: '',
-        //     Address: '',
-        //     city: '',
-        //     LandMark: '',
-        //     Type: ''
-        // });
-
-
-
-        axios.post(`http://localhost:4000/customerDetails`, body)
-            .then(res => {
-                console.log(res);
-                console.log(res.data);
-            })
+        console.log(details);
+       var result= new service().customerDetails(details);
+       console.log(result);
     }
 
     render() {
@@ -87,7 +70,10 @@ class CustomerDetails extends Component {
                 <div className='subMain'>
                     <div className='lowerP' style={{ height: '530px' }}>
                         <div className='customerDetails'>CustomerDetails</div>
-                        <Button component="span" style={{marginLeft:"90%"}} onClick={this.editDetails}>Edit</Button>
+                        <Button component="span" 
+                        style={{ marginLeft: "90%", display: this.state.hidden ? 'block' : 'none'}} 
+                         
+                         onClick={this.editDetails}>Edit</Button>
                         <div className='content'>
                             <div className='name'>
                                 <TextField id="outlined-basic" label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
@@ -109,7 +95,7 @@ class CustomerDetails extends Component {
                         </div>
                         <div className='content'>
                             <div className='name'>
-                                <TextField id="outlined-basic" label="city/town" name="city" variant="outlined" value={this.state.city} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }}  style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" label="city/town" name="city" variant="outlined" value={this.state.city} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
                             </div>
                             <div className='phonenumber'>
                                 <TextField id="outlined-basic" label="Landmark" name="LandMark" variant="outlined" value={this.state.LandMark} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '100%' }} />
@@ -121,17 +107,17 @@ class CustomerDetails extends Component {
                             {/* <FormLabel component="legend">labelPlacement</FormLabel> */}
                             <RadioGroup aria-label="Type" color="primary" name="Type" row>
                                 <FormControlLabel
-                                    value="Home" 
+                                    value="Home"
                                     // checked={this.state.radio === 'Home'} 
-                                    onChange={(event) => this.handleValueChange(event)} 
+                                    onChange={(event) => this.handleValueChange(event)}
                                     control={<Radio />}
                                     disabled={this.state.formfilled}
-                                     label="Home" />
+                                    label="Home" />
 
                                 <FormControlLabel
-                                    value="Work" control={<Radio />} 
+                                    value="Work" control={<Radio />}
                                     // checked={this.state.radio === 'Work'} 
-                                    onChange={(event) => this.handleValueChange(event)} 
+                                    onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
                                     label="Work" />
 
@@ -144,24 +130,12 @@ class CustomerDetails extends Component {
                                     // checked={this.state.radio === 'Other'}
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
-                                    control={<Radio  />}
+                                    control={<Radio />}
                                     label="Other" />
                                 {/* /> */}
 
-
-                                <FormControlLabel
-                                    // value="bottom"
-                                    // control={<Radio color="primary" />}
-                                    // label="Other"
-                                    // labelPlacement="end"
-                                    value="Other"
-                                    // checked={this.state.radio === 'Other'}
-                                    onChange={(event) => this.handleValueChange(event)}
-                                    control={<Radio  />}
-                                    label="Other" />
-                                {/* /> */}
                             </RadioGroup>
-                        </FormControl>
+                        </FormControl> 
 
                         <div className='continue' style={{ float: 'right' }} onClick={this.handleLogin} >CONTINUE</div>
 

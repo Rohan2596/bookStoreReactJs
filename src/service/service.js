@@ -21,11 +21,11 @@ export default class Service {
                 return result;
             });
     }
-    customerDetails(body){
+    customerDetails(details){
         return Axios({
             method: 'POST',
-            url: 'http://localhost:3000/customerDetails',
-            data: body
+            url: 'http://localhost:4000/customerDetails',
+            data: details
         })
             .then(result => {
                 return result;
