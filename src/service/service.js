@@ -5,7 +5,7 @@ export default class Service {
     getAllBooks() {
         return Axios({
             method: 'GET',
-            url: 'http://localhost:4000/getBookDetails'
+            url: 'http://localhost:3000/getBookDetails'
         })
             .then(result => {
                 console.log(result);
@@ -15,7 +15,7 @@ export default class Service {
     searchBookByTitle(serchData){
         return Axios({
             method: 'GET',
-            url: 'http://localhost:4000/searchBookByTitle?title='+serchData
+            url: 'http://localhost:3000/searchBookByTitle?title='+serchData
         })
             .then(result => {
                 return result;
@@ -24,7 +24,7 @@ export default class Service {
     customerDetails(details){
         return Axios({
             method: 'POST',
-            url: 'http://localhost:4000/customerDetails',
+            url: 'http://localhost:3000/customerDetails',
             data: details
         })
             .then(result => {
