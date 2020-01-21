@@ -45,16 +45,17 @@
     text-align: center;
 }
 .orderInfoParagraph{
-    font-size: 14;
+    font-size: 12;
     font-family: Arial, Helvetica, sans-serif;
     padding: 0px;
 }
 .tableDiv{
-    width: 50%;
-   
+    width: 60%;
+    margin-bottom: 2%;
 }
 .table{
     border: 1 solid grey;
+    width: 100%;
 }
 .MuiTableCell-root {
     display: table-cell;
@@ -69,5 +70,8 @@
     vertical-align: inherit;
 }
 .headerTableRow{
-    background-color: dimgrey;
+    background-color:#ededed;
+}
+.button{
+    margin:10px
 }

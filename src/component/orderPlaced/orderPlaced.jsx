@@ -9,7 +9,15 @@ import TableRow from '@material-ui/core/TableRow';
 import oredrPlacedImage from './success-Order-confirmed-and-passed.jpg'
 
 class OrderPlaced extends Component {
+    constructor(props) {
+        super(props);
+        this.redirectToDashboard = this.redirectToDashboard.bind(this); 
+    }
+    redirectToDashboard(){
+        this.props.history.push('/')
+    }
     render() {
+        
         return (
             <div align="center" >
                 <div align="center">
@@ -17,12 +25,12 @@ class OrderPlaced extends Component {
                 </div>
                 <div>
                     <p className="orderInfoParagraph">hurray!!! your order is confirmed</p>
-                    <p className="orderInfoParagraph">the order id is #123456, save the order id for</p>
+                    <p className="orderInfoParagraph">the order id is {this.props.location.state.order_id}, save the order id for</p>
                     <p className="orderInfoParagraph">further communication</p>
                 </div>
 
-                <div className="tableDiv" align="center">
-                    <TableContainer width="700px"  className="table">
+                <div className="tableDiv">
+                    <TableContainer className="table">
                         <Table className="table">
                             <TableBody>
                                 <TableRow className="headerTableRow">
@@ -40,7 +48,7 @@ class OrderPlaced extends Component {
                         </Table>
                     </TableContainer>
                 </div>
-                <Button variant="contained" className="button" color="primary" >
+                <Button variant="contained" className="button" color="primary" onClick={this.redirectToDashboard} >
                     Continue Shopping
                 </Button>
             </div>
