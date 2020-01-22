@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from '@material-ui/core/IconButton';
+
 class Dashboard extends Component {
    constructor(props) {
       super(props);
@@ -15,13 +16,22 @@ class Dashboard extends Component {
       }
    }
    getAllBooksData = []
-
+   sliceTitle;
    componentDidMount() {
       new getAllBooksService().getAllBooks().then(response => {
          var allBooks = response.data.result;
+         for(let i=0;i<allBooks.length;i++){
+            if(allBooks[i].title.length>25)
+            {
+               allBooks[i].title=allBooks[i].title.slice(0, 25);
+               allBooks[i].title=allBooks[i].title+"...";
+            }
+         }
+         console.log(allBooks);
          this.setState({ getBooks: allBooks })
       })
    }
+
 
    handleSearch = (event) => {
       if (event.target.value.length >= 1) {
@@ -32,9 +42,31 @@ class Dashboard extends Component {
    handleSearchBook = () => {
       let searchDataValue = this.state.searchValue
       new getAllBooksService().searchBookByTitle(searchDataValue).then((data) => {
-         if (data.data.result.length > 0)
-            this.setState({ getBooks: data.data.result });
+         let allBooks=data.data.result;
+         for(let i=0;i<allBooks.length;i++){
+            if(allBooks[i].title.length>25)
+            {
+               allBooks[i].title=allBooks[i].title.slice(0, 25);
+               allBooks[i].title=allBooks[i].title+"...";
+            }
+         }
+            this.setState({ getBooks: allBooks });
 
+      }).catch((err) => {
+         console.log(err);
+      })
+   }
+   handleSortBy=(event)=>{
+      new getAllBooksService().sortBook(event.target.value).then((data) => {
+         let allBooks=data.data.result;
+         for(let i=0;i<allBooks.length;i++){
+            if(allBooks[i].title.length>25)
+            {
+               allBooks[i].title=allBooks[i].title.slice(0, 25);
+               allBooks[i].title=allBooks[i].title+"...";
+            }
+         }
+            this.setState({ getBooks: allBooks });
       }).catch((err) => {
          console.log(err);
       })
@@ -64,9 +96,23 @@ class Dashboard extends Component {
                         )}
                      />
                   </div>
+                  
                </div>
             </div>
-            <AllBooks getAllBooksData={this.state.getBooks} />
+            <div className='subMain'>
+            <div className='lower'>
+               <h3 id="bookStore">Books</h3>
+               <select id="sortByDropDown" onChange={this.handleSortBy.bind(this)}>
+                     <option value="relevancce">Sort by relevance</option>
+                     <option value="-1">Price:low to high</option>
+                     <option value="1">Price:hight to low</option>
+                     <option value="date">Newest arraivals</option>
+               </select>
+               <AllBooks getAllBooksData={this.state.getBooks} />
+            </div>
+         </div>
+
+            {/* <AllBooks getAllBooksData={this.state.getBooks} /> */}
          </div>
       );
    }
