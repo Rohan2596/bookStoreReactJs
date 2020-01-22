@@ -42,3 +42,10 @@ font-size: 12;
 text-align: 'initial';
 font-family: 'Courier New', Courier, monospace;
 }
+#bookStore{
+    display: inline-block;
+}
+#sortByDropDown{
+    display: inline;
+    margin-left: 73%;
+}
