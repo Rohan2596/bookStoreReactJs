@@ -21,13 +21,16 @@ class CustomerDetails extends Component {
             city: '',
             LandMark: '',
             formfilled: false,
-            hidden:false,
-            divHide:false
+            hidden: false,
+            divHide: false,
+            buttonHide: true,
         };
 
     }
     editDetails = () => {
         this.setState({ formfilled: !this.state.formfilled });
+        this.setState({ buttonHide: !this.state.buttonHide });
+        this.setState({ hidden: !this.state.hidden });
     }
     handleValueChange = (event) => {
 
@@ -39,8 +42,9 @@ class CustomerDetails extends Component {
 
     handleLogin = (e) => {
         this.setState({ formfilled: !this.state.formfilled });
-        this.setState({hidden:!this.state.hidden});
-        this.setState({divHide:!this.state.divHide})
+        this.setState({ buttonHide: !this.state.buttonHide });
+        this.setState({ hidden: !this.state.hidden });
+        this.setState({ divHide: true})
         const details = {
             Name: this.state.Name,
             Phone_Number: this.state.Phone_Number,
@@ -53,8 +57,8 @@ class CustomerDetails extends Component {
 
         };
         console.log(details);
-       var result= new service().customerDetails(details);
-       console.log(result);
+        var result = new service().customerDetails(details);
+        console.log(result);
     }
 
     render() {
@@ -70,14 +74,15 @@ class CustomerDetails extends Component {
                     </div>
                 </div>
                 <div className='subMain'>
-                    <div className='lowerP' style={{ height: '530px' }}>
-                        <div className='customerDetails'>CustomerDetails</div>
-
-                        <Button  component="span" 
-                        style={{ marginLeft: "90%", display: this.state.hidden ? 'block' : 'none'}} 
-                    
-    
-                         onClick={this.editDetails}>Edit</Button>
+                    <div className='lowerP' >
+                        <div className='customerDetails'>CustomerDetails
+                        <Button component="span"
+                                style={{
+                                    marginLeft: "90%", marginTop: '-4%',
+                                    display: this.state.hidden ? 'block' : 'none'
+                                }}
+                                onClick={this.editDetails}>Edit</Button>
+                        </div>
                         <div className='content'>
                             <div className='name'>
                                 <TextField id="outlined-basic" label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
@@ -112,7 +117,6 @@ class CustomerDetails extends Component {
                             <RadioGroup aria-label="Type" color="primary" name="Type" row>
                                 <FormControlLabel
                                     value="Home"
-                                    // checked={this.state.radio === 'Home'} 
                                     onChange={(event) => this.handleValueChange(event)}
                                     control={<Radio />}
                                     disabled={this.state.formfilled}
@@ -120,39 +124,34 @@ class CustomerDetails extends Component {
 
                                 <FormControlLabel
                                     value="Work" control={<Radio />}
-                                    // checked={this.state.radio === 'Work'} 
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
                                     label="Work" />
 
                                 <FormControlLabel
-                                    // value="bottom"
-                                    // control={<Radio color="primary" />}
-                                    // label="Other"
-                                    // labelPlacement="end"
                                     value="Other"
-                                    // checked={this.state.radio === 'Other'}
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
                                     control={<Radio />}
                                     label="Other" />
-                                {/* /> */}
+                                </RadioGroup>
+                        </FormControl>
 
-                            </RadioGroup>
-                        </FormControl> 
-
-                        <div className='continue'  onClick={this.handleLogin} >CONTINUE</div>
+                        <div className='continue' style={{ display: this.state.buttonHide ? 'block' : 'none' }} onClick={this.handleLogin} >CONTINUE</div>
                     </div>
-                    </div>
-                    <div className='lastDiv' style={{height:'auto'}}><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div>
-                <div style={{display:this.state.divHide ? 'block':'none'}}>
-                <div style={{ paddingTop: '11%' ,marginLeft: '-14%'}}> <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="abc"></img></div>
-                <div style={{textAlign:"center"}}><p>dont make yuyuu</p></div></div>
-            </div></div>
-                   
-                
+                </div>
+                <div className='lastDiv' style={{ height: 'auto' }}><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div>
+                    <div style={{ display: this.state.divHide ? 'block' : 'none' }}>
+                        <div style={{ paddingTop: '11%', marginLeft: '-14%' }}> <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="abc"></img></div>
+                        <div style={{ textAlign: "center" }}><p>dont make yuyuu</p></div>
+                    <Button style={{ paddingLeft: '5%', paddingRight: '5%',    marginLeft: '376%', marginTop: '-35%'}} onClick={this.handleLogin} variant="contained" color="primary">done</Button>
+                </div>
+                </div>
+            </div>
 
-            
+
+
+
         );
     }
 }
