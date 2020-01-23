@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import '../dashboardComponent/dashboard.css';
 import './allBooks.css'
 import { withRouter } from 'react-router-dom';
-import Card from '@material-ui/core/Card'
+import Card from '@material-ui/core/Card';
 class AllBooks extends Component {
    constructor(props) {
       super(props);
@@ -18,7 +18,6 @@ class AllBooks extends Component {
       // const [isShown,setIsShown]=useState(false);
       var Books = this.props.getAllBooksData.map((item, i) => {
          return (
-
             <div className="div" >
                <Card className='card info' >
                   <div className='imageSpace' >
@@ -37,14 +36,9 @@ class AllBooks extends Component {
          )
       })
       return (
-         <div className='subMain'>
-            <div className='lower'>
-               <h3>Books</h3>
-               <div>
-                  <div>
-                     {Books}
-                  </div>
-               </div>
+         <div>
+            <div>
+               {Books}
             </div>
          </div>
       )

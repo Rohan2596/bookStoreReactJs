@@ -55,7 +55,7 @@
 }
 .table{
     border: 1 solid grey;
-    width: 100%;
+    border-radius:4px ;
 }
 .MuiTableCell-root {
     display: table-cell;

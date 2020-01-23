@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import oredrPlacedImage from './success-Order-confirmed-and-passed.jpg'
 
+
 class OrderPlaced extends Component {
     constructor(props) {
         super(props);
@@ -19,14 +20,16 @@ class OrderPlaced extends Component {
     render() {
         
         return (
+            
             <div align="center" >
+                
                 <div align="center">
                     <img src={oredrPlacedImage} height="300" width="300" />
                 </div>
                 <div>
-                    <p className="orderInfoParagraph">hurray!!! your order is confirmed</p>
-                    <p className="orderInfoParagraph">the order id is {this.props.location.state.order_id}, save the order id for</p>
-                    <p className="orderInfoParagraph">further communication</p>
+                    <p className="orderInfoParagraph" style={{marginTop:'1.25%',marginBottom:'0.25%'}}>hurray!!! your order is confirmed</p>
+                    <p className="orderInfoParagraph" style={{margin:'0.25%'}}>the order id is #123456, save the order id for</p>
+                    <p className="orderInfoParagraph" style={{marginTop:'0.25%',marginBottom:'1.5%'}}>further communication</p>
                 </div>
 
                 <div className="tableDiv">
@@ -34,9 +37,9 @@ class OrderPlaced extends Component {
                         <Table className="table">
                             <TableBody>
                                 <TableRow className="headerTableRow">
-                                    <TableCell className="tableCellLeft"><p className="orderInfoParagraph">Email Us</p></TableCell>
-                                    <TableCell className="center"><p className="orderInfoParagraph">Contact Us</p></TableCell>
-                                    <TableCell className="tableCellRight"><p className="orderInfoParagraph">Address</p></TableCell>
+                                    <TableCell className="tableCellLeft" style={{backgroundColor:'whitesmoke'}}><p className="orderInfoParagraph">Email Us</p></TableCell>
+                                    <TableCell className="center"  style={{backgroundColor:'whitesmoke'}}><p className="orderInfoParagraph">Contact Us</p></TableCell>
+                                    <TableCell className="tableCellRight"  style={{backgroundColor:'whitesmoke'}}><p className="orderInfoParagraph">Address</p></TableCell>
                                 </TableRow>
                                 <TableRow className="TableRow" >
                                     <TableCell className="tableCellLeft"><p className="orderInfoParagraph">admin@bookstore.com</p></TableCell>
@@ -48,7 +51,7 @@ class OrderPlaced extends Component {
                         </Table>
                     </TableContainer>
                 </div>
-                <Button variant="contained" className="button" color="primary" onClick={this.redirectToDashboard} >
+                <Button variant="contained" className="button" color="primary" style={{marginTop:'1%'}} >
                     Continue Shopping
                 </Button>
             </div>

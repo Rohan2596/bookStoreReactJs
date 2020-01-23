@@ -80,6 +80,7 @@ border-radius: 2px;
     font-weight: 500;
     padding-top: 4px;
     padding-bottom: 4px;
+    text-overflow: ellipsis;
 }
 .authorName{
     font-size: 12px;
@@ -99,4 +100,11 @@ border-radius: 2px;
     margin-top: 7%;
     margin-bottom: 7%;
     cursor:pointer;
+}
+#bookStore{
+    display: inline-block;
+}
+#sortByDropDown{
+    display: inline;
+    margin-left: 73%;
 }

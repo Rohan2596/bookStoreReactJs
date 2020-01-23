@@ -30,6 +30,14 @@ export default class Service {
             .then(result => {
                 return result;
             });
-
+    }
+    sortBook(data){
+        return Axios({
+            method: 'GET',
+            url: 'http://localhost:3000/sortBookByAttribute?attribute='+data
+        })
+            .then(result => {
+                return result;
+            });
     }
 }  
