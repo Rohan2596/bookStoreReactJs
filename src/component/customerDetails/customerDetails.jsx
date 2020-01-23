@@ -27,9 +27,9 @@ class CustomerDetails extends Component {
             buttonHide: true,
             item: null
         };
-        // this.state.item = this.props.location.state.detail;
+        this.state.item = this.props.location.state.detail;
 
-        this.state.item = JSON.parse(sessionStorage.getItem("User1"));
+        // this.state.item = JSON.parse(sessionStorage.getItem("User1"));
 
     }
     formHide = () => {

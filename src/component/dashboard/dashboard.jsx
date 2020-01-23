@@ -15,3 +15,47 @@ class dashBoard extends Component {
 }
 
 export default dashBoard;
+
+
+// class Parent extends React.Component {
+//   constructor(props) {
+//       super(props)
+//       this.state = {
+//           data: "Default parent state"
+//       };
+      
+//       this.childHandler = this.childHandler.bind(this)
+//   }
+
+  
+  // childHandler(dataFromChild) {
+     
+  //     console.log('%cPrevious Parent State: ' + JSON.stringify(this.state), "color:orange");
+  //     this.setState({
+  //         data: dataFromChild
+  //     },() => console.log('Updated Parent State:', this.state));
+  // }
+
+//   render() {
+//             return <Child action={this.childHandler} />
+//   }
+// }
+
+
+
+
+// class Child extends React.Component {
+  
+//   render() {
+//       return <a onClick={() => this.props.action('Set Parent state set from child: ' + Math.floor(Math.random() * 999))}>Update Parent</a>;
+//   }
+// }
+
+
+
+
+// // Render
+// ReactDOM.render(
+//   <Parent />,
+//   document.getElementById('container')
+// );
