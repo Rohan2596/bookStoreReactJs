@@ -2,8 +2,6 @@
     width:90%;
     height:80vh;
     padding: 5%;
-   
-  
 }
 .form{ 
     width: 70%;
@@ -13,7 +11,6 @@
     border: 0.5px solid black;
     margin-left: 4%;
     padding-left: 4%;
-
 }
 .lastDiv{
     display: flex;
@@ -29,52 +26,52 @@
     
 }
 .toolBar {
-height: 3.5em;
-/* width: 100px; */
-background-color:#a03037;
-display: flex;
-flex-direction: row;
-width: 100%;
-margin-left: -6%;
-margin-top:-6%;
-justify-content: center;
-align-items: center;
-margin-bottom:3%
+    height: 3.5em;
+    /* width: 100px; */
+    background-color:#a03037;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-left: -6%;
+    margin-top:-6%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:3%
 }
 .imageLogo{
-display: flex;
-flex-direction: row;
-/* justify-content: center;
-align-items: center; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center;
+    align-items: center; */
 }
 .search{
-display: flex;
-flex-direction: row;
-background-color: white;
-height: 40%;
-width: 30%;
-border-radius: 2%;
-padding-top: 0%;
-padding-left: 12px;
-/* text-align: end; */
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 40%;
+    width: 30%;
+    border-radius: 2%;
+    padding-top: 0%;
+    padding-left: 12px;
+    /* text-align: end; */
 }
 .image{
-height: 38px;
-margin-right: 20px
+    height: 38px;
+    margin-right: 20px
 }
 .searchColor{
-margin-left: -2%;
-color: gray;
+    margin-left: -2%;
+    color: gray;
 }
 .title{
-color: white;
-padding-right: 30px;
+    color: white;
+    padding-right: 30px;
 }
 .input{
-border: none;
-outline: none;
-width: -webkit-fill-available;
-font-size: inherit;
+    border: none;
+    outline: none;
+    width: -webkit-fill-available;
+    font-size: inherit;
 }
 .button{
     display: flex;
@@ -106,18 +103,18 @@ font-size: inherit;
     padding-bottom: 5%;
 }
 .detailsSummary{
-        margin-top: 10%;
-        padding-left: 14%;
+    margin-top: 10%;
+    padding-left: 14%;
 }
 .summaryTitle{
     padding-right: -4%;
 }
 .orderSummary{
-     padding-left: 5%;
-     padding-top: 1%;
-     height: 4vh;
+    padding-left: 5%;
+    padding-top: 1%;
+    height: 4vh;
     margin: 1%;
-     position:absolute;
+    position:absolute;
 }
 .orderTitleCart{
     height: 5%;
@@ -140,29 +137,29 @@ font-size: inherit;
     width:74% */
     width: 100%;
     margin: 6%;
-    }
-    .cart-title {
+}
+.cart-title {
     padding-left: 4%;
     padding-top: 2%;
-    }
-    .cart-image {
-        display: flex;
-        flex-direction: row;
-        padding-left: 4%;
-        margin-top: 12%;
-        padding-top: 2%;
-        margin-left: -111%;
-    }
-    .book-title {
+}
+.cart-image {
+    display: flex;
+    flex-direction: row;
+    padding-left: 4%;
+    margin-top: 12%;
+    padding-top: 2%;
+    margin-left: -111%;
+}
+book-title {
     padding-left: 4%;
     font-family: fantasy;
-    }
-    .book-author {
+}
+.book-author {
     font-size: 89%;
     color: gray;
-    }
-    .divHide{
-        display: block;
-        height: 22vh;
-        width: 100%;
-    }
+}
+.divHide{
+    display: block;
+    height: 22vh;
+    width: 100%;
+}
