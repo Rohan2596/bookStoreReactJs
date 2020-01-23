@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Dashboard from './component/dashboardComponent/dashboard';
 import customerDetailsForm from './component/customerDetails/customerDetails';
 import OrderPlaced from './component/orderPlaced/orderPlaced';
-import Cart from './component/cart/cart'
 import CartIcon from './component/cart/cart-icon'
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
                 <Route path="/" component={Dashboard} exact={true} />
                  <Route path="/customer" component={customerDetailsForm} /> 
                  <Route path="/order" component={OrderPlaced} />
-                 <Route path="/cart" component={Cart} />
                  <Route path="/cartIcon" component={CartIcon} />
             </Switch>
         </div>
