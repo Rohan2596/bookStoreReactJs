@@ -21,13 +21,24 @@ class CustomerDetails extends Component {
             city: '',
             LandMark: '',
             formfilled: false,
-            hidden:false,
-            divHide:false
+            formHide:false,
+            hidden: false,
+            divHide: false,
+            buttonHide: true,
+            item: null
         };
+        this.state.item = this.props.location.state.detail;
 
+    }
+    formHide=()=>{
+        this.setState({ formHide:true})
+        console.log("done");
     }
     editDetails = () => {
         this.setState({ formfilled: !this.state.formfilled });
+        this.setState({ buttonHide: !this.state.buttonHide });
+        this.setState({ hidden: !this.state.hidden });
+        
     }
     handleValueChange = (event) => {
 
@@ -37,10 +48,14 @@ class CustomerDetails extends Component {
         }))
     }
 
-    handleLogin = (e) => {
+    onSubmit = (e) => {
         this.setState({ formfilled: !this.state.formfilled });
-        this.setState({hidden:!this.state.hidden});
-        this.setState({divHide:!this.state.divHide})
+        this.setState({ buttonHide: !this.state.buttonHide });
+        this.setState({ hidden: !this.state.hidden });
+        this.setState({ divHide: true })
+       
+    }
+    onCheckout=()=>{
         const details = {
             Name: this.state.Name,
             Phone_Number: this.state.Phone_Number,
@@ -53,9 +68,10 @@ class CustomerDetails extends Component {
 
         };
         console.log(details);
-       var result= new service().customerDetails(details);
-       console.log(result);
+        var result = new service().customerDetails(details);
+        console.log(result);
     }
+    
 
     render() {
         return (
@@ -69,50 +85,57 @@ class CustomerDetails extends Component {
                         <div className='search'>Search</div>
                     </div>
                 </div>
+                <Button className="editButton" component="span"
+                                style={{
+                                    marginLeft:'90%',
+                                    // display: this.state.hidden ? 'block' : 'none'
+                                }}
+                                onClick={this.formHide}>Edit</Button>
+                        
                 <div className='subMain'>
-                    <div className='lowerP' style={{ height: '530px' }}>
+                    <div className='lowerP' >
                         <div className='customerDetails'>CustomerDetails</div>
-
-                        <Button  component="span" 
-                        style={{ marginLeft: "90%", display: this.state.hidden ? 'block' : 'none'}} 
-                    
-    
-                         onClick={this.editDetails}>Edit</Button>
+                        <div className='formHide' style={{display :this.state.formHide?'block':'none' }}>
+                        <Button className="editButton" component="span"
+                                style={{
+                                    marginLeft:'90%',
+                                    display: this.state.hidden ? 'block' : 'none'
+                                }}
+                                onClick={this.editDetails}>Edit</Button>
+                        
                         <div className='content'>
                             <div className='name'>
-                                <TextField id="outlined-basic" label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='textField' label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                             <div className='phonenumber'>
-                                <TextField id="outlined-basic" label="Phone Number" name="Phone_Number" variant="outlined" value={this.state.Phone_Number} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='testField' label="Phone Number" name="Phone_Number" variant="outlined" value={this.state.Phone_Number} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                         </div>
                         <div className='content'>
                             <div className='name'>
-                                <TextField id="outlined-basic" label="Pincode" variant="outlined" name="Pincode" value={this.state.Pincode} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='textField' label="Pincode" variant="outlined" name="Pincode" value={this.state.Pincode} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                             <div className='phonenumber'>
-                                <TextField id="outlined-basic" label="Email" variant="outlined" name="Email" value={this.state.Email} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='textField' label="Email" variant="outlined" name="Email" value={this.state.Email} variant="outlined" onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                         </div>
                         <div className='address'>
-                            <TextField id="outlined-multiline-static" label="Address" name="Address" multiline rows="3" value={this.state.Address} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} variant="outlined" style={{ width: '66%' }} />
+                            <TextField id="outlined-multiline-static" style={{ width: '66%' }} label="Address" name="Address" multiline rows="3" value={this.state.Address} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} variant="outlined" />
                         </div>
                         <div className='content'>
                             <div className='name'>
-                                <TextField id="outlined-basic" label="city/town" name="city" variant="outlined" value={this.state.city} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '35%', marginRight: '0%' }} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='textField' label="city/town" name="city" variant="outlined" value={this.state.city} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                             <div className='phonenumber'>
-                                <TextField id="outlined-basic" label="Landmark" name="LandMark" variant="outlined" value={this.state.LandMark} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} style={{ width: '100%' }} />
+                                <TextField id="outlined-basic" className='textField' label="Landmark" name="LandMark" variant="outlined" value={this.state.LandMark} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
                             </div>
                         </div>
-
+                      
                         <div style={{ paddingLeft: '2%', paddingBottom: '1%' }}>Type</div>
                         <FormControl component="fieldset" style={{ paddingLeft: '2%' }}>
-                            {/* <FormLabel component="legend">labelPlacement</FormLabel> */}
                             <RadioGroup aria-label="Type" color="primary" name="Type" row>
                                 <FormControlLabel
                                     value="Home"
-                                    // checked={this.state.radio === 'Home'} 
                                     onChange={(event) => this.handleValueChange(event)}
                                     control={<Radio />}
                                     disabled={this.state.formfilled}
@@ -120,39 +143,47 @@ class CustomerDetails extends Component {
 
                                 <FormControlLabel
                                     value="Work" control={<Radio />}
-                                    // checked={this.state.radio === 'Work'} 
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
                                     label="Work" />
 
                                 <FormControlLabel
-                                    // value="bottom"
-                                    // control={<Radio color="primary" />}
-                                    // label="Other"
-                                    // labelPlacement="end"
                                     value="Other"
-                                    // checked={this.state.radio === 'Other'}
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled}
                                     control={<Radio />}
                                     label="Other" />
-                                {/* /> */}
-
                             </RadioGroup>
-                        </FormControl> 
+                        </FormControl>
 
-                        <div className='continue'  onClick={this.handleLogin} >CONTINUE</div>
+                        <div className='continue' style={{ display: this.state.buttonHide ? 'block' : 'none' }} onClick={this.onSubmit} >CONTINUE</div>
                     </div>
-                    </div>
-                    <div className='lastDiv' style={{height:'auto'}}><div style={{ paddingLeft: '5%', paddingTop: '1%' }}>Order Summary</div>
-                <div style={{display:this.state.divHide ? 'block':'none'}}>
-                <div style={{ paddingTop: '11%' ,marginLeft: '-14%'}}> <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="abc"></img></div>
-                <div style={{textAlign:"center"}}><p>dont make yuyuu</p></div></div>
-            </div></div>
-                   
-                
+                </div>
+                </div>
+                <div className='lastDiv' >
+                    <div className="orderSummary">Order Summary</div>
+                    <div className="divHide" style={{ display: this.state.divHide ? 'block' : 'none' }}>
 
-            
+
+                        <div className="border">
+
+                            <div className="cart-image">
+                                <img className='orderImage' src={this.state.item.image}></img>
+                                <div className="book-title">{this.state.item.title}
+                                    <div className="book-author">{this.state.item.author}</div>
+                                    <div className="book-price"> Rs.{this.state.item.price}</div>
+
+                                </div>
+
+                            </div>
+                            <div className='buttonLast'>
+                                <Button onClick={this.onCheckout} variant="contained" color="primary">done</Button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
