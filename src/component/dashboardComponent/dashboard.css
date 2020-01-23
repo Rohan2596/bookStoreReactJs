@@ -34,12 +34,12 @@
     font-size: large;
 }
 .search{
-width: 50%;
-height: 60%;
-background-color: white;
-margin: 2%;
-padding: 3px;
-border-radius: 2px;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    margin: 2%;
+    padding: 3px;
+    border-radius: 2px;
 }
 .subMain{
     width: 100%;
