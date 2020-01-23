@@ -56,14 +56,6 @@ class AllBooks extends Component {
       )
    }
 
-<<<<<<< HEAD
-=======
-   onSubmit(item) {
-      this.setState({ item: item });
-      this.props.history.push('/customer',
-      { detail: item})
-   }
->>>>>>> a6ffd131d69ba1da281a29dfbea38a12a982c2d5
 }
 export default withRouter(AllBooks);
 

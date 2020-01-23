@@ -47,10 +47,11 @@ class CartIcon extends Component {
 
     render() {
         var Books = this.state.item.map((item, i) => {
+            console.log(item)
             { this.totalPrice = this.totalPrice + parseInt(item.price) }
             return (
-                <div >
-                    <div className="cart-image">
+                <div>
+                    <div className="cart-image1">
                         <img className="image" src={item.image}></img>
                         <div className="book-title">{item.title}
                             <div className="book-author">{item.author}</div>

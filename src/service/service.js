@@ -24,7 +24,7 @@ export default class Service {
     customerDetails(details){
         return Axios({
             method: 'POST',
-            url: 'http://localhost:3000/customerDetails',
+            url: 'http://3.19.232.27:3000/customerDetails',
             data: details
         })
             .then(result => {
@@ -34,7 +34,7 @@ export default class Service {
     sortBook(data){
         return Axios({
             method: 'GET',
-            url: 'http://localhost:3000/sortBookByAttribute?attribute='+data
+            url: 'http://3.19.232.27:3000/sortBookByAttribute?attribute='+data
         })
             .then(result => {
                 return result;
