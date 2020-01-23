@@ -1,5 +1,5 @@
 .border {
-    height: 10em;
+    height: auto;
     margin: auto;
     border: 1px solid;
     width: 55%;
@@ -45,8 +45,23 @@
     background-color: #3371b5;
     color: whitesmoke;
     border: none;
-    height: 2.2em;
-    display: flex;
-    align-items: center;
-    margin-left: 83%;
+    width: auto;
+    margin: 1%;
+    margin-left: 82%;
+    padding: 1%;
+
+}
+.total-price {
+    background-color: brown;
+    width: 17.1%;
+    margin: 1%;
+    margin-left: auto;
+    padding: 1%;
+    color: whitesmoke;
+}
+#totalprice{
+    width:100%;
+    text-align: center;
+    margin: 1px;
+   
 }

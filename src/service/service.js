@@ -5,7 +5,7 @@ export default class Service {
     getAllBooks() {
         return Axios({
             method: 'GET',
-            url: 'http://localhost:3000/getBookDetails'
+            url: 'http://3.19.232.27:3000/getBookDetails'
         })
             .then(result => {
                 console.log(result);
@@ -15,7 +15,7 @@ export default class Service {
     searchBookByTitle(serchData){
         return Axios({
             method: 'GET',
-            url: 'http://localhost:3000/searchBookByTitle?title='+serchData
+            url: 'http://3.19.232.27:3000/searchBookByTitle?title='+serchData
         })
             .then(result => {
                 return result;

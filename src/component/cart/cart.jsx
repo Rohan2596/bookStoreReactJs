@@ -14,9 +14,15 @@ class Cart extends Component {
         this.state = {
             getBooks: [],
         }
+        this.childHandler = this.childHandler.bind(this)
     }
     getAllBooksData = []
-
+    cartSelectedBook=[]
+    childHandler(dataFromChild) {
+        this.cartSelectedBook.push(dataFromChild)
+        console.log(this.cartSelectedBook)
+        
+    }
     componentDidMount() {
         new getAllBooksService().getAllBooks().then(response => {
             var allBooks = response.data.result;
@@ -71,12 +77,12 @@ class Cart extends Component {
                         <ShoppingCartOutlinedIcon />
                     </button>
                 </div>
-                <AllBooks getAllBooksData={this.state.getBooks} />
+                <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} />
             </div>
         );
     }
     onSubmit() {
-        this.props.history.push('/cartIcon')
+        this.props.history.push('/cartIcon',{selectedBooks:this.cartSelectedBook})
     }
 }
 export default withRouter(Cart);

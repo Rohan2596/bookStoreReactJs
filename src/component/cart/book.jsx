@@ -8,13 +8,14 @@ import cart from './cart-icon'
 class AllBooks extends Component {
    constructor(props) {
       super(props);
-
-      this.onSubmit = this.onSubmit.bind(this);
+      this.array=[];
+      // this.onSubmit = this.onSubmit.bind(this);
       this.handleOnHoverCard = this.handleOnHoverCard.bind(this)
       this.state = {
-          array:[],
+         
          item: null
       }
+      
    };
    handleOnHoverCard = () => { this.setState({ cardHover: !this.state.cardHover }) }
    render() {
@@ -29,7 +30,7 @@ class AllBooks extends Component {
                   <div className='bookName'>{item.title}</div>
                   <div className='authorName'>{item.author}</div>
                   <div className='bookName'>Rs.{item.price}</div>
-                  <button className='buttonBuyNow' onClick={() => this.onSubmit(item)} >ADD TO BAG
+                  <button className='buttonBuyNow' onClick={() => this.props.action(item)} >ADD TO BAG
                 </button>
                   <Card className="card bookInfo" >
                      <p id="bookTitleForDescription" gutterBottom> Book Detail</p>
@@ -53,13 +54,13 @@ class AllBooks extends Component {
       )
    }    
 
-   onSubmit(item) {
-      this.setState({ item: item });
-      console.log(this.state.array.push({item}));
-      console.log(this.state.array)
+   // onSubmit(item) {
+   //    this.setState({ item: item });
+   //    console.log(this.state.array.push({item}));
+   //    console.log(this.state.array)
       
-    //   this.props.history.push('/cartIcon',{details:item});
+   //    this.props.history.push('/cartIcon',{details:item});
 
-   }
+   // }
 }
 export default withRouter(AllBooks); 
