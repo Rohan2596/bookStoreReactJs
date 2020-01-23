@@ -19,7 +19,9 @@ class Dashboard extends Component {
    sliceTitle;
    componentDidMount() {
       new getAllBooksService().getAllBooks().then(response => {
+         
          var allBooks = response.data.result;
+        
          for(let i=0;i<allBooks.length;i++){
             if(allBooks[i].title.length>25)
             {

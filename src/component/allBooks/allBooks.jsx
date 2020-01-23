@@ -12,6 +12,7 @@ class AllBooks extends Component {
       this.state = {
          item: null
       }
+      
    };
    handleOnHoverCard = () => { this.setState({ cardHover: !this.state.cardHover }) }
    render() {
@@ -46,6 +47,8 @@ class AllBooks extends Component {
 
    onSubmit(item) {
       this.setState({ item: item });
+      console.log(item)
+      sessionStorage.setItem("User1",JSON.stringify(item));
       this.props.history.push('/customer',
       { detail: item})
    }
