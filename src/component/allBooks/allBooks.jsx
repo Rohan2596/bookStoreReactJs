@@ -12,7 +12,6 @@ class AllBooks extends Component {
          item: null,
          addToBagCss: []
       }
-
    };
    addToCart = (item, i) => {
       this.state.addToBagCss[i] = true;

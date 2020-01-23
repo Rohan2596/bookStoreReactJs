@@ -158,12 +158,7 @@ class customerDetailsForm extends Component {
                             </div>
 
                             {/* <div style={{ textAlign: "center" }}><p>dont make yuyuu</p></div> */}
-                            {/* <div className='orderDetailSummary'>
-                                <div>{this.state.item.title}</div>
-                                <div><h9>{this.state.item.author}</h9></div>
-                                <div>{this.state.item.price}</div>
-                            </div>
-                        </div> */} 
+                            {/* <div className=/div> 
                     {/* </div>
                 </div> */}
 
