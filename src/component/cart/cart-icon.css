@@ -1,0 +1,69 @@
+.border {
+    height: auto;
+    margin: auto;
+    border: 1px solid;
+    width: 55%;
+    margin-top: 3%;
+}
+.image {
+    height: 5em;
+    width: 4em;
+}
+.cart-title {
+    padding-left: 4%;
+    padding-top: 2%;
+}
+.cart-image {
+    display: flex;
+    flex-direction: row;
+    padding-left: 4%;
+    padding-top: 2%;
+}
+.book-title {   
+    padding-left: 4%;
+    font-family: fantasy;
+}
+.book-author {
+    font-size: 89%;
+    color: gray;
+}
+.minus-plus {
+    border-radius: 50%;
+    margin: 2px;
+    border: 1px solid grey;
+    background-color: whitesmoke;
+}
+.text {
+    width: 10%;
+}
+.remove {
+    border: none;
+    background-color: white;
+    padding-left: 5%;
+}
+.place-order {
+    background-color: #3371b5;
+    color: whitesmoke;
+    border: none;
+    height: 2.2em;
+    display: flex;
+    align-items: center;
+    margin-left: 83%;
+}
+#total-price {
+    background-color:brown;
+    /* display:inline-block; */
+    height: 32px;
+    float: right;
+    width: 140px;
+    margin: 1%;
+    color:whitesmoke;
+    align-items: flex-end;
+
+}
+#totalprice{
+    width:100%;
+    text-align: center;
+    margin: 1px;
+   
+}
