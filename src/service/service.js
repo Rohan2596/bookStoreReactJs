@@ -1,43 +1,42 @@
 import Axios from "axios"
-
-// import  {postAxios,getAxios} from ''
+// import {postAxios,getAxios} from ''
 export default class Service {
-    constructor(){
+    constructor() {
         this.Url = "http://18.189.22.123:3000/";
     }
     getAllBooks() {
         return Axios({
             method: 'GET',
-            url: this.Url+'getBookDetails'
+            url: this.Url + 'getBookDetails'
         })
             .then(result => {
                 console.log(result);
                 return result;
             });
     }
-    searchBookByTitle(serchData){
+    searchBookByTitle(serchData) {
         return Axios({
             method: 'GET',
-            url: this.Url+'searchBookByTitle?title='+serchData
+            url: this.Url + 'searchBookByTitle?title=' + serchData
         })
             .then(result => {
                 return result;
             });
     }
-    customerDetails(details){
+    customerDetails(details) {
         return Axios({
             method: 'POST',
-            url: this.Url+'customerDetails',
+            url: this.Url + 'customerDetails',
             data: details
         })
             .then(result => {
                 return result;
             });
     }
-    sortBook(data){
+    sortBook(data) {
         return Axios({
             method: 'GET',
-            url: this.Url+'sortBookByAttribute?attribute='+data
+            url: this.Url + 'sortBookByAttribute?attribute=' + data
         })
             .then(result => {
                 return result;
