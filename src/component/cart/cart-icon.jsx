@@ -41,7 +41,8 @@ class CartIcon extends Component {
         for (let i = 0; i < this.state.item.length; i++) {
             // a = this.state.item[i].find(o => o.title == item.title)
             if (this.state.item[i].title == item.title) {
-                console.log("ssss")
+                this.state.totalPrice=this.state.totalPrice-parseInt(item.price);
+                this.setState({totalPrice:this.state.totalPrice})
                 this.state.item.splice(i, 1);
                 this.setState({ item: this.state.item })
             }
