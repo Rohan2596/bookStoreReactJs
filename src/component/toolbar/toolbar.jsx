@@ -4,11 +4,11 @@ class ToolBar extends Component {
   render() {
     return (
       
-        <div className='dashboard'>
-          <div className='logo'>
+        <div className='dashboard1'>
+          <div className='logo1'>
             <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="optional" />
           </div>
-          <div className='title'>Bookstore</div>
+          <div className='title1'>Bookstore</div>
         </div>
       
     )

@@ -18,6 +18,7 @@ class CartIcon extends Component {
             { this.state.totalPrice = this.state.totalPrice + parseInt(item.price) }
         })
     }
+    // detail
 
     decrement = (i, price) => {
         if (this.state.purchaseBookIndividualCount[i] != undefined) {
@@ -77,7 +78,9 @@ class CartIcon extends Component {
                     <div className="total-price"><p id="totalprice">Total Price: {this.state.totalPrice}</p></div>
                     <button className="place-order">PLACE ORDER</button>
                 </div>
-                {/* <Customer/> */}
+                <div >
+                    <Customer detail={this.state.item}/>
+                </div>
             </div>
         )
     }

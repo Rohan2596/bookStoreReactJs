@@ -4,6 +4,7 @@
     border: 1px solid;
     width: 55%;
     margin-top: 3%;
+    min-height: 4em;
 }
 .image {
     height: 5em;

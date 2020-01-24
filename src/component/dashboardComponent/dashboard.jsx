@@ -12,22 +12,15 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 class Dashboard extends Component {
    constructor(props) {
       super(props);
-      
       this.state = {
          getBooks: [],
          cartSelectedBook: [],
-         count: 0,
-        }
-      this.childHandler = this.childHandler.bind(this);
+         count: 0
+      }
+      this.childHandler = this.childHandler.bind(this)
    }
    getAllBooksData = []
-   
-   childHandler(dataFromChild) {
-      this.state.cartSelectedBook.push(dataFromChild)
-      console.log(this.cartSelectedBook)
-      this.setState({ count: this.state.cartSelectedBook.length })
 
-   }
    componentDidMount() {
       new getAllBooksService().getAllBooks().then(response => {
 
@@ -50,7 +43,13 @@ class Dashboard extends Component {
          this.setState({ searchValue: event.target.value });
       }
    }
+   childHandler(dataFromChild) {
+      console.log(dataFromChild);
+      this.state.cartSelectedBook.push(dataFromChild)
+      console.log(this.cartSelectedBook)
+      this.setState({ count: this.state.cartSelectedBook.length })
 
+   }
    handleSearchBook = () => {
       let searchDataValue = this.state.searchValue
       new getAllBooksService().searchBookByTitle(searchDataValue).then((data) => {
@@ -87,13 +86,15 @@ class Dashboard extends Component {
    render() {
       return (
          <div className='main' >
+            {/* <ToolBar/> */}
             <div className='upper'>
                <div className='dashboard'>
                   <div className='logo'>
                      <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="optional" />
                   </div>
                   <div className='title'>Bookstore</div>
-                  <div className="search">
+
+                  <div className="search" hidden={false}>
                      <InputBase
                         type="search"
                         placeholder="Search…"
@@ -108,11 +109,13 @@ class Dashboard extends Component {
                         )}
                      />
                   </div>
+
                </div>
                <button className="cart-icon w3-btn" onClick={() => this.onSubmit()}>
                   Cart
-                        <ShoppingCartOutlinedIcon /><span class="w3-badge "><button className="itemCounts" disabled>{this.state.count}</button></span>
+                  <ShoppingCartOutlinedIcon /><span class="w3-badge "><button className="itemCounts" disabled>{this.state.count}</button></span>
                </button>
+
             </div>
             <div className='subMain'>
                <div className='lower'>
@@ -131,4 +134,4 @@ class Dashboard extends Component {
       );
    }
 }
-export default withRouter(Dashboard);
+export default (Dashboard);
