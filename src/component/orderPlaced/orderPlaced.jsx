@@ -24,29 +24,6 @@ class OrderPlaced extends Component {
 
         return (
             <div>
-                <div className='upper'>
-               <div className='dashboard'>
-                  <div className='logo'>
-                     <img src="https://img.icons8.com/ios/64/000000/open-book.png" alt="optional" />
-                  </div>
-                  <div className='title'>Bookstore</div>
-                  <div className="search">
-                     <InputBase
-                        type="search"
-                        placeholder="Search…"
-                        onChange={this.handleSearch}
-                        onKeyDown={this.handleSearchBook}
-                        startAdornment={(
-                           <InputAdornment position="start">
-                              <IconButton>
-                                 <SearchIcon />
-                              </IconButton>
-                           </InputAdornment>
-                        )}
-                     />
-                  </div>
-                  </div>
-               </div>
                 <div align="center" >
                     <div align="center">
                         <img src={oredrPlacedImage} height="300" width="300" />
@@ -75,7 +52,7 @@ class OrderPlaced extends Component {
                             </Table>
                         </TableContainer>
                     </div>
-                    <Button variant="contained" className="button" color="primary" style={{ marginTop: '1%' }} onClick={()=>{this.redirectToDashboard()}} >
+                    <Button variant="contained" className="button1" color="primary" style={{ marginBottom: "3%" }} onClick={()=>{this.redirectToDashboard()}} >
                         Continue Shopping
                 </Button>
                 </div>

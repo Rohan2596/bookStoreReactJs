@@ -8,6 +8,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import service from '../../service/service'
+import { withRouter } from 'react-router-dom';
 
 class CustomerDetails extends Component {
     constructor(props) {
@@ -20,48 +21,117 @@ class CustomerDetails extends Component {
             Address: '',
             city: '',
             LandMark: '',
+            errors: {
+                Name: '',
+                Phone_Number: '',
+                Pincode: '',
+                Email: '',
+                Address: '',
+                city: '',
+                LandMark: ''
+            },
             formfilled: false,
-            formHide: '',
+            formHide: false,
             hidden: false,
             divHide: false,
             buttonHide: true,
             item: null
         };
-        console.log(this.props.detail)
-        console.log("CCC",this.props.formDetails(this.props));
+        console.log('asdfasdf', this.props.formDetails)
         this.state.item = this.props.detail;
-        this.state.formHide=this.props.formDetails;
-        console.log(this.state.formHide);
-        console.log("======>" + this.state.item[0].title)
-        // this.state.item = JSON.parse(sessionStorage.getItem("User1"));
-
+        this.state.formHide = this.props.formDetails;
+    
     }
+
     formHide = () => {
-        
+
         this.setState({ formHide: true })
         console.log("done");
     }
+
     editDetails = () => {
-        this.setState({ formfilled: !this.state.formfilled });
-        this.setState({ buttonHide: !this.state.buttonHide });
-        this.setState({ hidden: !this.state.hidden });
-
+        console.log("done")
+        this.setState(this.state = { formfilled: !this.state.formfilled });
+        this.setState(this.state = { buttonHide: !this.state.buttonHide });
+        this.setState(this.state = { hidden: !this.state.hidden });
+       
     }
+
     handleValueChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        let errors = this.state.errors;
+        const phonenumber = RegExp('^[0-9]{10}$');
+        const pincode = RegExp('^[1-9][0-9]{5}$');
+        const email = RegExp('^[0-9a-zA-Z]+([-,_,+,.]{1}[0-9A-Za-z]+){0,1}@[0-9A-Za-z]+.[A-Za-z]{1,3}(.[a-zA-Z]{1,3}){0,1}$');
 
-        const { name, value } = event.target
-        console.log(this.setState({
-            [name]: value
-        }))
+        switch (name) {
+            case 'Name':
+                errors.Name = value.length < 5
+                    ? 'Full Name must be 5 characters long!'
+                    : '';
+                break;
+            case 'Phone_Number':
+                errors.Phone_Number = phonenumber.test(value)
+                    ? ''
+                    : 'Phone Number is not valid!';
+                break;
+            case 'Pincode':
+                errors.Pincode = pincode.test(value)
+                    ? ''
+                    : 'Pin code is not valid!';
+                break;
+            case 'Email':
+                errors.Email = email.test(value)
+                    ? ''
+                    : 'Email is not valid!';
+                break;
+            case 'Address':
+                errors.Address = value.length < 5
+                    ? 'Address is not valid!'
+                    : '';
+                break;
+            case 'city':
+                errors.city = value.length < 5
+                    ? 'city is not valid!'
+                    : '';
+                break;
+            case 'LandMark':
+                errors.LandMark = ''
+                    ? 'Address is not valid!'
+                    : '';
+                break;
+            default:
+                break;
+        }
+
+        this.setState({ errors, [name]: value }, () => {
+            console.log(errors)
+        })
     }
 
-    onSubmit = (e) => {
-        this.setState({ formfilled: !this.state.formfilled });
-        this.setState({ buttonHide: !this.state.buttonHide });
-        this.setState({ hidden: !this.state.hidden });
-        this.setState({ divHide: true })
+    onSubmit = (event) => {
+        event.preventDefault();
+        const validateForm = (errors) => {
+            let valid = true;
+            Object.values(errors).forEach(
+                (val) => val.length > 0 && (valid = false)
+            );
+            return valid;
+        }
 
+
+        if (validateForm(this.state.errors)) {
+            this.setState({ formfilled: !this.state.formfilled });
+            this.setState({ buttonHide: !this.state.buttonHide });
+            this.setState({ hidden: !this.state.hidden });
+            this.setState({ divHide: true })
+            console.info('Valid Form')
+        } else {
+            console.error('Invalid Form')
+        }
     }
+
     onCheckout = () => {
         const details = {
             Name: this.state.Name,
@@ -72,18 +142,16 @@ class CustomerDetails extends Component {
             Email: this.state.Email,
             LandMark: this.state.LandMark,
             Type: this.state.Type
-
         };
         console.log(details);
         var result = new service().customerDetails(details);
         console.log(result);
+        this.props.history.push('/order');
     }
 
 
     render() {
-        // for (let i = 0; i < this.state.item.length; i++) {
-        //     let item = null;
-        //     item = this.state.item[i];
+        const { errors } = this.state;
         var Books = this.state.item.map((item, i) => {
             return (
                 <div>
@@ -103,12 +171,6 @@ class CustomerDetails extends Component {
         });
         return (
             <div>
-                <Button className="editButton" component="span"
-                    style={{
-                        marginLeft: '90%'
-                    }}
-                    onClick={this.formHide}>Edit</Button>
-
                 <div className='subMain'>
                     <div className="border" >
                         <div className='orderSummary'>CustomerDetails</div>
@@ -118,36 +180,105 @@ class CustomerDetails extends Component {
                                     marginLeft: '90%',
                                     display: this.state.hidden ? 'block' : 'none'
                                 }}
-                                onClick={this.editDetails}>Edit</Button>
+                                onClick={this.editDetails}
+                            >Edit</Button>
 
                             <div className='content'>
                                 <div className='name'>
-                                    <TextField id="outlined-basic" className='textField' label="Name" name="Name" variant="outlined" value={this.state.Name} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="Name"
+                                        name="Name"
+                                        variant="outlined"
+                                        value={this.state.Name}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled}
+                                    />
+                                    {errors.Name.length > 0 && <span className="error">{errors.Name}</span>}
                                 </div>
                                 <div className='phonenumber'>
-                                    <TextField id="outlined-basic" className='testField' label="Phone Number" name="Phone_Number" variant="outlined" value={this.state.Phone_Number} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='testField'
+                                        label="Phone Number"
+                                        name="Phone_Number"
+                                        variant="outlined"
+                                        value={this.state.Phone_Number}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled}
+                                    />
+                                    {errors.Phone_Number.length > 0 && <span className="error">{errors.Phone_Number}</span>}
                                 </div>
+
                             </div>
                             <div className='content'>
                                 <div className='name'>
-                                    <TextField id="outlined-basic" className='textField' label="Pincode" variant="outlined" name="Pincode" value={this.state.Pincode} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="Pincode"
+                                        variant="outlined"
+                                        name="Pincode" value={this.state.Pincode}
+                                        required={true}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled}
+                                    />
+                                    {errors.Pincode.length > 0 && <span className="error">{errors.Pincode}</span>}
                                 </div>
                                 <div className='phonenumber'>
-                                    <TextField id="outlined-basic" className='textField' label="Email" variant="outlined" name="Email" value={this.state.Email} variant="outlined" onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="Email"
+                                        variant="outlined"
+                                        name="Email"
+                                        value={this.state.Email}
+                                        variant="outlined"
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled}
+                                    />
+                                    {errors.Email.length > 0 && <span className="error">{errors.Email}</span>}
                                 </div>
                             </div>
                             <div className='address'>
-                                <TextField id="outlined-multiline-static" style={{ width: '66%' }} label="Address" name="Address" multiline rows="3" value={this.state.Address} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} variant="outlined" />
+                                <TextField id="outlined-multiline-static"
+                                    style={{ width: '66%' }}
+                                    label="Address"
+                                    name="Address"
+                                    multiline rows="3"
+                                    value={this.state.Address}
+                                    onChange={(event) => this.handleValueChange(event)}
+                                    disabled={this.state.formfilled} variant="outlined"
+                                />
+                                {errors.Address.length > 0 && <span className="error">{errors.Address}</span>}
                             </div>
                             <div className='content'>
                                 <div className='name'>
-                                    <TextField id="outlined-basic" className='textField' label="city/town" name="city" variant="outlined" value={this.state.city} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="city/town"
+                                        name="city"
+                                        variant="outlined"
+                                        value={this.state.city}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled} />
+                                    {errors.city.length > 0 && <span className="error">{errors.city}</span>}
                                 </div>
                                 <div className='phonenumber'>
-                                    <TextField id="outlined-basic" className='textField' label="Landmark" name="LandMark" variant="outlined" value={this.state.LandMark} onChange={(event) => this.handleValueChange(event)} disabled={this.state.formfilled} />
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="Landmark"
+                                        name="LandMark"
+                                        variant="outlined"
+                                        value={this.state.LandMark}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled} />
+                                    {errors.LandMark.length > 0 && <span className="error">{errors.LandMark}</span>}
                                 </div>
                             </div>
-
                             <div style={{ paddingLeft: '2%', paddingBottom: '1%' }}>Type</div>
                             <FormControl component="fieldset" style={{ paddingLeft: '2%' }}>
                                 <RadioGroup aria-label="Type" color="primary" name="Type" row>
@@ -182,12 +313,11 @@ class CustomerDetails extends Component {
                     <div className="orderSummary">Order Summary</div>
                     {Books}
                     <div className="buttonHide" style={{ display: this.state.divHide ? 'block' : 'none' }}>
-                        <Button onClick={this.onCheckout} variant="contained" color="primary">done</Button>
+                        <Button onClick={() => this.onCheckout()} variant="contained" color="primary">Checkout</Button>
                     </div>
                 </div>
             </div>
         );
     }
-    // }
 }
-export default CustomerDetails;
+export default withRouter(CustomerDetails);

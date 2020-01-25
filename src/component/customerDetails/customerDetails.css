@@ -234,3 +234,7 @@ font-size: inherit;
         margin-top:-5% 
 
     }
+    .error {
+        color: red;
+        font-family: auto;
+    }

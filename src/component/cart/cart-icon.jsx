@@ -11,7 +11,8 @@ class CartIcon extends Component {
             item: null,
             purchaseBookIndividualCount: [],
             totalPrice: 0,
-            hideForm: false
+            hideForm: false,
+            callCustomer:null
         }
 
         this.state.item = this.props.location.state.selectedBooks
@@ -23,7 +24,6 @@ class CartIcon extends Component {
 
     submit = () => {
         this.setState(this.state = { hideForm: !this.state.hideForm })
-        
         console.log("done", this.state.hideForm)
     }
 
@@ -46,6 +46,7 @@ class CartIcon extends Component {
             this.setState({ totalPrice: this.state.totalPrice })
         }
     }
+
 
     remove = (i, price) => {
         this.state.totalPrice = this.state.totalPrice - (parseInt(price) * this.state.purchaseBookIndividualCount[i]);
@@ -83,11 +84,18 @@ class CartIcon extends Component {
                     <div className="cart-title">My Cart({this.state.item.length})</div>
                     {Books}
                     <div className="total-price"><p id="totalprice">Total Price: {this.state.totalPrice}</p></div>
-                    <button className="place-order" onClick={this.submit}>PLACE ORDER </button>
+                    <button className="place-order" onClick={this.submit} >PLACE ORDER </button>
                 </div>
-                <div >
-                    <Customer detail={this.state.item} formDetails={this.submit} />
+
+                <div>
+                    {this.state.hideForm?
+                    <Customer detail={this.state.item} formDetails={this.state.hideForm} />
+                :
+                <div> <Customer detail={this.state.item} formDetails={this.state.hideForm} />
                 </div>
+                }
+                </div>
+                
             </div>
         )
     }
