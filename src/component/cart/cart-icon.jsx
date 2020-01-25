@@ -10,7 +10,8 @@ class CartIcon extends Component {
         this.state = {
             item: null,
             purchaseBookIndividualCount: [],
-            totalPrice: 0
+            totalPrice: 0,
+            hideForm: false
         }
 
         this.state.item = this.props.location.state.selectedBooks
@@ -18,7 +19,13 @@ class CartIcon extends Component {
             { this.state.totalPrice = this.state.totalPrice + parseInt(item.price) }
         })
     }
-    // detail
+
+
+    submit = () => {
+        this.setState(this.state = { hideForm: !this.state.hideForm })
+        
+        console.log("done", this.state.hideForm)
+    }
 
     decrement = (i, price) => {
         if (this.state.purchaseBookIndividualCount[i] != undefined) {
@@ -41,7 +48,7 @@ class CartIcon extends Component {
     }
 
     remove = (i, price) => {
-        this.state.totalPrice = this.state.totalPrice - (parseInt(price)*this.state.purchaseBookIndividualCount[i]);
+        this.state.totalPrice = this.state.totalPrice - (parseInt(price) * this.state.purchaseBookIndividualCount[i]);
         this.setState({ totalPrice: this.state.totalPrice })
         this.state.item.splice(i, 1, undefined);
         this.setState({ item: this.state.item })
@@ -62,7 +69,7 @@ class CartIcon extends Component {
                                     <button className="minus-plus" onClick={() => { this.decrement(i, item.price) }}>-</button>
                                     <input className="text" value={this.state.purchaseBookIndividualCount[i]} ></input>
                                     <button className="minus-plus" onClick={() => { this.increment(i, item.price) }}>+</button>
-                                    <button className="remove" onClick={() => { this.remove(i,item.price) }}>Remove</button>
+                                    <button className="remove" onClick={() => { this.remove(i, item.price) }}>Remove</button>
                                 </div>
                             </div>
                         </div>
@@ -76,10 +83,10 @@ class CartIcon extends Component {
                     <div className="cart-title">My Cart({this.state.item.length})</div>
                     {Books}
                     <div className="total-price"><p id="totalprice">Total Price: {this.state.totalPrice}</p></div>
-                    <button className="place-order">PLACE ORDER</button>
+                    <button className="place-order" onClick={this.submit}>PLACE ORDER </button>
                 </div>
                 <div >
-                    <Customer detail={this.state.item}/>
+                    <Customer detail={this.state.item} formDetails={this.submit} />
                 </div>
             </div>
         )

@@ -21,19 +21,23 @@ class CustomerDetails extends Component {
             city: '',
             LandMark: '',
             formfilled: false,
-            formHide: false,
+            formHide: '',
             hidden: false,
             divHide: false,
             buttonHide: true,
             item: null
         };
         console.log(this.props.detail)
+        console.log("CCC",this.props.formDetails(this.props));
         this.state.item = this.props.detail;
+        this.state.formHide=this.props.formDetails;
+        console.log(this.state.formHide);
         console.log("======>" + this.state.item[0].title)
         // this.state.item = JSON.parse(sessionStorage.getItem("User1"));
 
     }
     formHide = () => {
+        
         this.setState({ formHide: true })
         console.log("done");
     }
