@@ -116,8 +116,9 @@ class CustomerDetails extends Component {
 
         const validateForm = (errors) => {
             let valid = false;
-            if (this.state.Name.length > 3 && this.state.Phone_Number.length > 9 && this.state.Pincode.length > 5 &&
-                this.state.Email.length > 3 && this.state.Address.length > 3 && this.state.city.length > 3 && this.state.Landmark.length > 3) {
+            console.log("length"+this.state.Name.length)
+            if (this.state.Name.length > 2 && this.state.Phone_Number.length > 9 && this.state.Pincode.length > 5 &&
+                this.state.Email.length > 3 && this.state.Address.length > 3 && this.state.city.length > 3 && this.state.LandMark.length > 3) {
                 valid = true;
                 Object.values(errors).forEach(
                     (val) => val.length > 0 && (valid = false)
@@ -195,6 +196,7 @@ class CustomerDetails extends Component {
                                         className='textField'
                                         label="Name"
                                         name="Name"
+                                        required
                                         variant="outlined"
                                         value={this.state.Name}
                                         onChange={(event) => this.handleValueChange(event)}
@@ -209,6 +211,7 @@ class CustomerDetails extends Component {
                                         label="Phone Number"
                                         name="Phone_Number"
                                         variant="outlined"
+                                        required
                                         value={this.state.Phone_Number}
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled}
@@ -225,7 +228,7 @@ class CustomerDetails extends Component {
                                         label="Pincode"
                                         variant="outlined"
                                         name="Pincode" value={this.state.Pincode}
-                                        required={true}
+                                        required
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled}
                                     />
@@ -240,6 +243,7 @@ class CustomerDetails extends Component {
                                         name="Email"
                                         value={this.state.Email}
                                         variant="outlined"
+                                        required
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled}
                                     />
@@ -252,6 +256,7 @@ class CustomerDetails extends Component {
                                     label="Address"
                                     name="Address"
                                     multiline rows="3"
+                                    required
                                     value={this.state.Address}
                                     onChange={(event) => this.handleValueChange(event)}
                                     disabled={this.state.formfilled} variant="outlined"
@@ -266,6 +271,7 @@ class CustomerDetails extends Component {
                                         label="city/town"
                                         name="city"
                                         variant="outlined"
+                                        required
                                         value={this.state.city}
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled} />
@@ -277,6 +283,7 @@ class CustomerDetails extends Component {
                                         className='textField'
                                         label="Landmark"
                                         name="LandMark"
+                                        required
                                         variant="outlined"
                                         value={this.state.LandMark}
                                         onChange={(event) => this.handleValueChange(event)}
@@ -307,7 +314,7 @@ class CustomerDetails extends Component {
                                         disabled={this.state.formfilled}
                                         control={<Radio />}
                                         label="Other" />
-                                        
+
                                 </RadioGroup>
                             </FormControl>
 
