@@ -35,12 +35,13 @@ class CustomerDetails extends Component {
             hidden: false,
             divHide: false,
             buttonHide: true,
-            item: null
+            item: null,
+            id: null
         };
         console.log('asdfasdf', this.props.formDetails)
         this.state.item = this.props.detail;
         this.state.formHide = this.props.formDetails;
-    
+
     }
 
     formHide = () => {
@@ -54,7 +55,7 @@ class CustomerDetails extends Component {
         this.setState(this.state = { formfilled: !this.state.formfilled });
         this.setState(this.state = { buttonHide: !this.state.buttonHide });
         this.setState(this.state = { hidden: !this.state.hidden });
-       
+
     }
 
     handleValueChange = (event) => {
@@ -141,14 +142,13 @@ class CustomerDetails extends Component {
             city: this.state.city,
             Email: this.state.Email,
             LandMark: this.state.LandMark,
-            Type: this.state.Type
+            Type: this.state.Type,
+            Books: this.state.item
         };
-        console.log(details);
-        var result = new service().customerDetails(details);
-        console.log(result);
-        this.props.history.push('/order');
+        new service().customerDetails(details).then(data => {
+            this.props.history.push('/order', data.data.result.result._id);
+        })
     }
-
 
     render() {
         const { errors } = this.state;

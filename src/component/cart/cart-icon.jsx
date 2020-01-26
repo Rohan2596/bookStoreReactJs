@@ -12,7 +12,7 @@ class CartIcon extends Component {
             purchaseBookIndividualCount: [],
             totalPrice: 0,
             hideForm: false,
-            callCustomer:null
+            callCustomer: null
         }
 
         this.state.item = this.props.location.state.selectedBooks
@@ -88,14 +88,14 @@ class CartIcon extends Component {
                 </div>
 
                 <div>
-                    {this.state.hideForm?
-                    <Customer detail={this.state.item} formDetails={this.state.hideForm} />
-                :
-                <div> <Customer detail={this.state.item} formDetails={this.state.hideForm} />
+                    {this.state.item.length >= 1 & this.state.hideForm ?
+                        <Customer detail={this.state.item} formDetails={this.state.hideForm} />
+                        :
+                        <div> <Customer detail={this.state.item} formDetails={this.state.hideForm} />
+                        </div>
+                    }
                 </div>
-                }
-                </div>
-                
+
             </div>
         )
     }

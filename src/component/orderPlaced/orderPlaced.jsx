@@ -7,15 +7,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import oredrPlacedImage from './success-Order-confirmed-and-passed.jpg'
-import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from '@material-ui/core/IconButton';
 
 class OrderPlaced extends Component {
     constructor(props) {
         super(props);
-        // this.redirectToDashboard = this.redirectToDashboard.bind(this);
     }
     redirectToDashboard() {
         this.props.history.push('/')
@@ -30,7 +25,7 @@ class OrderPlaced extends Component {
                     </div>
                     <div>
                         <p className="orderInfoParagraph" style={{ marginTop: '1.25%', marginBottom: '0.25%' }}>hurray!!! your order is confirmed</p>
-                        <p className="orderInfoParagraph" style={{ margin: '0.25%' }}>the order id is #123456, save the order id for</p>
+                        <p className="orderInfoParagraph" style={{ margin: '0.25%' }}>the order id is #{this.props.location.state}, save the order id for</p>
                         <p className="orderInfoParagraph" style={{ marginTop: '0.25%', marginBottom: '1.5%' }}>further communication</p>
                     </div>
                     <div className="tableDiv">

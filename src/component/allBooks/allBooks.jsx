@@ -16,7 +16,7 @@ class AllBooks extends Component {
          pageOfItems: []
       }
       this.onChangePage = this.onChangePage.bind(this);
-     
+
    };
    onChangePage(pageOfItems) {
       this.setState({ pageOfItems: pageOfItems });

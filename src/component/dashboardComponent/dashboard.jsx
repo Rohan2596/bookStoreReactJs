@@ -32,7 +32,6 @@ class Dashboard extends Component {
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
-         // console.log(allBooks);
          this.setState({ getBooks: allBooks })
       })
    }
@@ -44,9 +43,7 @@ class Dashboard extends Component {
       }
    }
    childHandler(dataFromChild) {
-      console.log(dataFromChild);
       this.state.cartSelectedBook.push(dataFromChild)
-      console.log(this.cartSelectedBook)
       this.setState({ count: this.state.cartSelectedBook.length })
 
    }
@@ -86,7 +83,6 @@ class Dashboard extends Component {
    render() {
       return (
          <div className='main' >
-            {/* <ToolBar/> */}
             <div className='upper'>
                <div className='dashboard'>
                   <div className='logo'>

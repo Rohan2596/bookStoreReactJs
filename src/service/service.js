@@ -26,7 +26,8 @@ export default class Service {
     customerDetails(details) {
         return Axios({
             method: 'POST',
-            url: this.Url + 'customerDetails',
+            // url: this.Url + 'customerDetails',
+            url: 'http://localhost:3000/customerDetails',
             data: details
         })
             .then(result => {
