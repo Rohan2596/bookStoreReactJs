@@ -51,7 +51,7 @@ class CartIcon extends Component {
     remove = (i, price) => {
         this.state.totalPrice = this.state.totalPrice - (parseInt(price) * this.state.purchaseBookIndividualCount[i]);
         this.setState({ totalPrice: this.state.totalPrice })
-        this.state.item.splice(i, 1, undefined);
+        this.state.item.splice(i, 1);
         this.setState({ item: this.state.item })
     }
 
