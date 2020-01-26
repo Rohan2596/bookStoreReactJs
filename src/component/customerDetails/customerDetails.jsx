@@ -30,6 +30,7 @@ class CustomerDetails extends Component {
                 city: '',
                 LandMark: ''
             },
+            selectedOption:'Home',
             formfilled: false,
             formHide: false,
             hidden: false,
@@ -45,7 +46,6 @@ class CustomerDetails extends Component {
     }
 
     formHide = () => {
-
         this.setState({ formHide: true })
         console.log("done");
     }
@@ -111,6 +111,13 @@ class CustomerDetails extends Component {
         })
     }
 
+    handleOptionChange=(changeEvent)=> {
+        console.log(changeEvent.target.type)
+        this.setState({
+          selectedOption: changeEvent.target.value
+        });
+      }
+
     onSubmit = (event) => {
         event.preventDefault();
 
@@ -133,7 +140,6 @@ class CustomerDetails extends Component {
             this.setState({ buttonHide: !this.state.buttonHide });
             this.setState({ hidden: !this.state.hidden });
             this.setState({ divHide: true })
-            console.info('Valid Form')
         } else {
             console.error('Invalid Form')
         }
@@ -299,13 +305,22 @@ class CustomerDetails extends Component {
                                         onChange={(event) => this.handleValueChange(event)}
                                         control={<Radio />}
                                         disabled={this.state.formfilled}
+<<<<<<< HEAD
+                                        label="Home"
+                                        checked={this.state.selectedOption === 'Home'} 
+                                        onChange={this.handleOptionChange} 
+                                        defaultChecked />
+=======
                                         defaultValue
                                         label="Home" />
+>>>>>>> 4b460609bc94a041beb55a4805d9025794296116
 
                                     <FormControlLabel
                                         value="Work" control={<Radio />}
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled}
+                                        checked={this.state.selectedOption === 'Work'}
+                                        onChange={this.handleOptionChange} 
                                         label="Work" />
 
                                     <FormControlLabel
@@ -313,6 +328,8 @@ class CustomerDetails extends Component {
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled}
                                         control={<Radio />}
+                                        checked={this.state.selectedOption === 'Other'}
+                                        onChange={this.handleOptionChange} 
                                         label="Other" />
 
                                 </RadioGroup>
