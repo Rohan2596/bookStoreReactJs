@@ -68,7 +68,7 @@ class CustomerDetails extends Component {
 
         switch (name) {
             case 'Name':
-                errors.Name = value.length < 5
+                errors.Name = value.length < 2
                     ? 'Full Name must be 5 characters long!'
                     : '';
                 break;
@@ -93,13 +93,13 @@ class CustomerDetails extends Component {
                     : '';
                 break;
             case 'city':
-                errors.city = value.length < 5
+                errors.city = value.length < 3
                     ? 'city is not valid!'
                     : '';
                 break;
-            case 'LandMark':
-                errors.LandMark = ''
-                    ? 'Address is not valid!'
+            case 'Landmark':
+                errors.Landmark = value.length < 3
+                    ? 'Landmark is not proper!'
                     : '';
                 break;
             default:
@@ -120,12 +120,17 @@ class CustomerDetails extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
+
         const validateForm = (errors) => {
-            let valid = true;
-            Object.values(errors).forEach(
-                (val) => val.length > 0 && (valid = false)
-            );
-            return valid;
+            let valid = false;
+            if (this.state.Name.length > 3 && this.state.Phone_Number.length > 9 && this.state.Pincode.length > 5 &&
+                this.state.Email.length > 3 && this.state.Address.length > 3 && this.state.city.length > 3 && this.state.Landmark.length > 3) {
+                valid = true;
+                Object.values(errors).forEach(
+                    (val) => val.length > 0 && (valid = false)
+                );
+                return valid;
+            }
         }
 
 
@@ -293,10 +298,15 @@ class CustomerDetails extends Component {
                                         onChange={(event) => this.handleValueChange(event)}
                                         control={<Radio />}
                                         disabled={this.state.formfilled}
+<<<<<<< HEAD
                                         label="Home"
                                         checked={this.state.selectedOption === 'Home'} 
                                         onChange={this.handleOptionChange} 
                                         defaultChecked />
+=======
+                                        defaultValue
+                                        label="Home" />
+>>>>>>> 4b460609bc94a041beb55a4805d9025794296116
 
                                     <FormControlLabel
                                         value="Work" control={<Radio />}
@@ -314,6 +324,7 @@ class CustomerDetails extends Component {
                                         checked={this.state.selectedOption === 'Other'}
                                         onChange={this.handleOptionChange} 
                                         label="Other" />
+                                        
                                 </RadioGroup>
                             </FormControl>
 
