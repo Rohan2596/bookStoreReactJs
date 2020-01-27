@@ -1,0 +1,25 @@
+.titlebar{
+        width: 100%;
+        margin-left: 20%;
+        margin-bottom:10px
+        
+}
+.pagination {
+        display: block;
+        width: 100%;
+        text-align: center;
+        cursor:pointer;
+}
+      
+.pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+}
+.pagination a:active {
+        color: red;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+}

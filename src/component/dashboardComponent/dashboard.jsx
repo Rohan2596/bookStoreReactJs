@@ -120,7 +120,6 @@ class Dashboard extends Component {
                         <option value="relevancce">Sort by relevance</option>
                         <option value="-1">Price:low to high</option>
                         <option value="1">Price:hight to low</option>
-                        <option value="date">Newest arraivals</option>
                      </select>
                   </div>
                   <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} />
