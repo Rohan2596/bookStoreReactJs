@@ -15,7 +15,8 @@ class Dashboard extends Component {
       this.state = {
          getBooks: [],
          cartSelectedBook: [],
-         count: 0
+         count: 0,
+         addToBag:new Map()
       }
       this.childHandler = this.childHandler.bind(this)
    }
@@ -32,6 +33,7 @@ class Dashboard extends Component {
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
+         this.setState()
          this.setState({ getBooks: allBooks })
       })
    }
@@ -119,7 +121,7 @@ class Dashboard extends Component {
                      <select id="sortByDropDown" onChange={this.handleSortBy.bind(this)}>
                         <option value="relevancce">Sort by relevance</option>
                         <option value="-1">Price:low to high</option>
-                        <option value="1">Price:hight to low</option>
+                        <option value="1">Price:high to low</option>
                      </select>
                   </div>
                   <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} />
