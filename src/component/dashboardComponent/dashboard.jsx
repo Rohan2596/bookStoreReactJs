@@ -123,6 +123,7 @@ class Dashboard extends Component {
                         <option value="relevancce">Sort by relevance</option>
                         <option value="-1">Price:low to high</option>
                         <option value="1">Price:high to low</option>
+                  
                      </select>
                   </div>
                   <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} hiddenAddedButtonMap={this.state.addToBag} />
