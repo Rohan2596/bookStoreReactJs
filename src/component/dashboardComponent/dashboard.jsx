@@ -27,8 +27,8 @@ class Dashboard extends Component {
          var allBooks = response.data.result;
 
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 25) {
-               allBooks[i].title = allBooks[i].title.slice(0, 25);
+            if (allBooks[i].title.length > 15) {
+               allBooks[i].title = allBooks[i].title.slice(0, 15);
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
@@ -52,8 +52,8 @@ class Dashboard extends Component {
       new getAllBooksService().searchBookByTitle(searchDataValue).then((data) => {
          let allBooks = data.data.result;
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 25) {
-               allBooks[i].title = allBooks[i].title.slice(0, 25);
+            if (allBooks[i].title.length > 15) {
+               allBooks[i].title = allBooks[i].title.slice(0, 15);
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
@@ -67,8 +67,8 @@ class Dashboard extends Component {
       new getAllBooksService().sortBook(event.target.value).then((data) => {
          let allBooks = data.data.result;
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 25) {
-               allBooks[i].title = allBooks[i].title.slice(0, 25);
+            if (allBooks[i].title.length > 15) {
+               allBooks[i].title = allBooks[i].title.slice(0, 15);
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
@@ -119,8 +119,8 @@ class Dashboard extends Component {
                      <select id="sortByDropDown" onChange={this.handleSortBy.bind(this)}>
                         <option value="relevancce">Sort by relevance</option>
                         <option value="-1">Price:low to high</option>
-                        <option value="1">Price:hight to low</option>
-                        <option value="date">Newest arraivals</option>
+                        <option value="1">Price:high to low</option>
+                  
                      </select>
                   </div>
                   <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} />
