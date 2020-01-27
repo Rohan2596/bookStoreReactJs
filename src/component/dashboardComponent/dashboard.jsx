@@ -15,7 +15,8 @@ class Dashboard extends Component {
       this.state = {
          getBooks: [],
          cartSelectedBook: [],
-         count: 0
+         count: 0,
+         addToBag:new Map()
       }
       this.childHandler = this.childHandler.bind(this)
    }
@@ -32,6 +33,7 @@ class Dashboard extends Component {
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
+         this.setState()
          this.setState({ getBooks: allBooks })
       })
    }
