@@ -8,6 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import oredrPlacedImage from './Order-placed-successfully.png'
 
+
 class OrderPlaced extends Component {
     constructor(props) {
         super(props);

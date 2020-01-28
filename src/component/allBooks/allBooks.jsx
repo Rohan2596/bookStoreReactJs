@@ -8,10 +8,11 @@ class AllBooks extends Component {
    constructor(props) {
       super(props);
       this.array = [];
+      this.addToBagCss=this.props.hiddenAddedButtonMap;
       var exampleItems = this.props.getAllBooksData;
       this.state = {
          item: null,
-         addToBagCss: [],
+         addToBagCss: new Map(),
          exampleItems: exampleItems,
          pageOfItems: []
       }
@@ -22,7 +23,7 @@ class AllBooks extends Component {
       this.setState({ pageOfItems: pageOfItems });
    }
    addToCart = (item, i) => {
-      this.state.addToBagCss[i] = true;
+      this.state.addToBagCss.set(item.title, true);
       this.setState({ addToBagCss: this.state.addToBagCss })
       this.props.action(item);
 
@@ -30,7 +31,7 @@ class AllBooks extends Component {
    render() {
       this.state.exampleItems = this.props.getAllBooksData;
       var books = this.state.pageOfItems.map((item, i) => {
-         this.state.addToBagCss.push(false);
+         
          return (
             <div className="div" id={i + 1}>
                <Card className='card'>
@@ -46,8 +47,8 @@ class AllBooks extends Component {
                         <p id="description">{item.description}</p>
                      </Card>
                   </div>
-                  <button className='beforeAddToBag' hidden={this.state.addToBagCss[i]} onClick={() => { this.addToCart(item, i) }} >ADD TO BAG</button>
-                  <button className='afterAddToBag' hidden={!this.state.addToBagCss[i]} disabled >ADDED TO BAG</button>
+                  <button className='beforeAddToBag' hidden={this.state.addToBagCss.get(item.title)} onClick={() => { this.addToCart(item, i) }} >ADD TO BAG</button>
+                  <button className='afterAddToBag' hidden={!this.state.addToBagCss.get(item.title)} disabled >ADDED TO BAG</button>
                </Card>
             </div>
          )

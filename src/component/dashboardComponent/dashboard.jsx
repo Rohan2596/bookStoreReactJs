@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './dashboard.css';
-import { withRouter } from 'react-router-dom';
 import getAllBooksService from '../../service/service'
 import AllBooks from '../allBooks/allBooks'
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,21 +19,23 @@ class Dashboard extends Component {
       }
       this.childHandler = this.childHandler.bind(this)
    }
-   getAllBooksData = []
-
+   getAllBooksData = [];
+   hiddenAddedButtonMap=new Map();
    componentDidMount() {
       new getAllBooksService().getAllBooks().then(response => {
 
          var allBooks = response.data.result;
 
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 15) {
-               allBooks[i].title = allBooks[i].title.slice(0, 15);
+            if (allBooks[i].title.length > 30) {
+               allBooks[i].title = allBooks[i].title.slice(0, 30);
                allBooks[i].title = allBooks[i].title + "...";
             }
+            this.state.addToBag.set(allBooks[i].title,false)
          }
          this.setState()
          this.setState({ getBooks: allBooks })
+         this.setState({addToBag:this.addToBag})
       })
    }
 
@@ -54,8 +55,8 @@ class Dashboard extends Component {
       new getAllBooksService().searchBookByTitle(searchDataValue).then((data) => {
          let allBooks = data.data.result;
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 15) {
-               allBooks[i].title = allBooks[i].title.slice(0, 15);
+            if (allBooks[i].title.length > 30) {
+               allBooks[i].title = allBooks[i].title.slice(0, 30);
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
@@ -69,8 +70,8 @@ class Dashboard extends Component {
       new getAllBooksService().sortBook(event.target.value).then((data) => {
          let allBooks = data.data.result;
          for (let i = 0; i < allBooks.length; i++) {
-            if (allBooks[i].title.length > 15) {
-               allBooks[i].title = allBooks[i].title.slice(0, 15);
+            if (allBooks[i].title.length > 30) {
+               allBooks[i].title = allBooks[i].title.slice(0, 30);
                allBooks[i].title = allBooks[i].title + "...";
             }
          }
@@ -128,7 +129,7 @@ class Dashboard extends Component {
                   
                      </select>
                   </div>
-                  <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} />
+                  <AllBooks getAllBooksData={this.state.getBooks} action={this.childHandler} hiddenAddedButtonMap={this.state.addToBag} />
                </div>
             </div>
          </div>
