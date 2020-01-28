@@ -80,7 +80,10 @@ class Dashboard extends Component {
       })
    }
    onSubmit() {
-      this.props.history.push('/cartIcon', { selectedBooks: this.state.cartSelectedBook })
+      console.log(this.state.cartSelectedBook.length);
+      {this.state.cartSelectedBook.length<=0 ? console.log("ERROR")
+      :this.props.history.push('/cartIcon', { selectedBooks: this.state.cartSelectedBook })
+   }
    }
    render() {
       return (

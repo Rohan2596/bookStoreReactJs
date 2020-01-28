@@ -14,7 +14,7 @@ class CartIcon extends Component {
             hideForm: false,
             callCustomer: null
         }
-
+        console.log(this.props);
         this.state.item = this.props.location.state.selectedBooks
         this.state.item.map((item) => {
             { this.state.totalPrice = this.state.totalPrice + parseInt(item.price) }
