@@ -21,6 +21,9 @@ class CustomerDetails extends Component {
             Address: '',
             city: '',
             LandMark: '',
+            userName:'',
+            password:'',
+            passwordHide:true,
             errors: {
                 Name: '',
                 Phone_Number: '',
@@ -28,7 +31,9 @@ class CustomerDetails extends Component {
                 Email: '',
                 Address: '',
                 city: '',
-                LandMark: ''
+                LandMark: '',
+                login:'',
+                password:''
             },
             formfilled: false,
             formHide: false,
@@ -147,8 +152,11 @@ class CustomerDetails extends Component {
             Email: this.state.Email,
             LandMark: this.state.LandMark,
             Type: this.state.Type,
+            userName:this.state.userName,
+            password:this.state.password,
             Books: this.state.item
         };
+        console.log(details);
         new service().customerDetails(details).then(data => {
             this.props.history.push('/order', data.data.result.result._id);
         })
@@ -289,6 +297,35 @@ class CustomerDetails extends Component {
                                     {errors.LandMark.length > 0 && <span className="error">{errors.LandMark}</span>}
                                 </div>
                             </div>
+                            <div className='content'>
+                                <div className='UserName'>
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        label="UserName"
+                                        name="userName"
+                                        variant="outlined"
+                                        required
+                                        value={this.state.userName}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled} />
+                                    {errors.login.length > 0 && <span className="error">{errors.login}</span>}
+                                </div>
+                                <div className='password'>
+                                    <TextField
+                                        id="outlined-basic"
+                                        className='textField'
+                                        type={this.state.passwordHide?"password":"text"}
+                                        label="password"
+                                        name="password"
+                                        required
+                                        variant="outlined"
+                                        value={this.state.password}
+                                        onChange={(event) => this.handleValueChange(event)}
+                                        disabled={this.state.formfilled} />
+                                    {errors.password.length > 0 && <span className="error">{errors.password}</span>}
+                                </div>
+                                </div>
                             <div style={{ paddingLeft: '2%', paddingBottom: '1%' }}>Type</div>
                             <FormControl component="fieldset" style={{ paddingLeft: '2%' }}>
                                 <RadioGroup aria-label="Type" color="primary" name="Type" row>
