@@ -8,7 +8,7 @@ class AllBooks extends Component {
    constructor(props) {
       super(props);
       this.array = [];
-      this.addToBagCss=this.props.hiddenAddedButtonMap;
+      this.addToBagCss = this.props.hiddenAddedButtonMap;
       var exampleItems = this.props.getAllBooksData;
       this.state = {
          item: null,
@@ -31,7 +31,7 @@ class AllBooks extends Component {
    render() {
       this.state.exampleItems = this.props.getAllBooksData;
       var books = this.state.pageOfItems.map((item, i) => {
-         
+
          return (
             <div className="div" id={i + 1}>
                <Card className='card'>
@@ -56,9 +56,12 @@ class AllBooks extends Component {
       })
       return (
          <div>
-            {books}
+            <div>
+               {books}
+            </div>
             <div><JwPagination items={this.state.exampleItems} onChangePage={this.onChangePage} /></div>
          </div>
+
       )
    }
 
