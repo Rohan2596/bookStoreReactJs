@@ -70,12 +70,14 @@ class CustomerDetails extends Component {
         const phonenumber = RegExp('^[0-9]{10}$');
         const pincode = RegExp('^[1-9][0-9]{5}$');
         const email = RegExp('^[0-9a-zA-Z]+([-,_,+,.]{1}[0-9A-Za-z]+){0,1}@[0-9A-Za-z]+.[A-Za-z]{1,3}(.[a-zA-Z]{1,3}){0,1}$');
+        const userName = RegExp('^[a-zA-Z]+(([,. -][a-zA-Z ])?[a-zA-Z]*)*$');
+        
 
         switch (name) {
             case 'Name':
-                errors.Name = value.length < 2
-                    ? 'Full Name must be 5 characters long!'
-                    : '';
+                errors.Name = userName.test(value)&&value.length>2
+                    ? ''
+                    : 'Full Name must be 5 characters long!';
                 break;
             case 'Phone_Number':
                 errors.Phone_Number = phonenumber.test(value)
@@ -98,9 +100,9 @@ class CustomerDetails extends Component {
                     : '';
                 break;
             case 'city':
-                errors.city = value.length < 3
-                    ? 'city is not valid!'
-                    : '';
+                errors.city = userName.test(value)&&value.length > 2
+                    ? ''
+                    : 'city is not valid!';
                 break;
             case 'Landmark':
                 errors.Landmark = value.length < 3

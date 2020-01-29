@@ -2,7 +2,7 @@ import Axios from "axios"
 // import {postAxios,getAxios} from ''
 export default class Service {
     constructor() {
-        this.Url = "http://localhost:3000/";
+        this.Url = "http://192.168.0.140:3000/";
     }
     getAllBooks() {
         return Axios({
