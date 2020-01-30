@@ -6,7 +6,7 @@ class footer extends Component {
         return (
             <div className="border2" style={{ textAlign: "center",
             padding: "20px",
-            position: "fixed",
+            // position: "fixed",
             left: "0",
             bottom: "0",
             height: "60px",

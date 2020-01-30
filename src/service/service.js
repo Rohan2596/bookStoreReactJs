@@ -42,4 +42,14 @@ export default class Service {
                 return result;
             });
     }
+    // getCustomer(data) {
+    //     return Axios({
+    //         method: 'GET',
+    //         url: this.Url+ 'getCustomer',
+    //         data: loginDetails
+    //     })
+    //         .then(result => {
+    //             return result;
+    //         });
+    // }
 }  
