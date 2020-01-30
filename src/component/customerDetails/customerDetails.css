@@ -238,3 +238,10 @@ font-size: inherit;
         color: red;
         font-family: auto;
     }
+    .detailsContacts{
+        flex-direction: row;
+        width: 70%;
+        /* height: 10%; */
+        display: flex;
+        padding-left: 2%;
+    }

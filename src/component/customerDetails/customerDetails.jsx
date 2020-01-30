@@ -32,7 +32,7 @@ class CustomerDetails extends Component {
                 Address: '',
                 city: '',
                 LandMark: '',
-                login:'',
+                userName:'',
                 password:''
             },
             formfilled: false,
@@ -108,6 +108,16 @@ class CustomerDetails extends Component {
                 errors.Landmark = value.length < 3
                     ? 'Landmark is not proper!'
                     : '';
+                    break;
+            case 'userName':
+                errors.userName = value.length < 5
+                    ? 'minimum 5 characters !'
+                    : '';
+                    break;
+            case 'password':
+                errors.password = value.length < 5
+                    ? 'minimum 5 characters for password!'
+                    : '';
                 break;
             default:
                 break;
@@ -124,7 +134,8 @@ class CustomerDetails extends Component {
             let valid = false;
             console.log("length"+this.state.Name.length)
             if (this.state.Name.length > 2 && this.state.Phone_Number.length > 9 && this.state.Pincode.length > 5 &&
-                this.state.Email.length > 3 && this.state.Address.length > 3 && this.state.city.length > 3 && this.state.LandMark.length > 3) {
+                this.state.Email.length > 3 && this.state.Address.length > 3 && this.state.city.length > 3 && this.state.LandMark.length > 3
+                &&this.state.userName.length>4 &&this.state.password.length>4) {
                 valid = true;
                 Object.values(errors).forEach(
                     (val) => val.length > 0 && (valid = false)
@@ -299,8 +310,8 @@ class CustomerDetails extends Component {
                                     {errors.LandMark.length > 0 && <span className="error">{errors.LandMark}</span>}
                                 </div>
                             </div>
-                            <div className='content'>
-                                <div className='UserName'>
+                            <div className='detailsContacts'>
+                                <div className='name'>
                                     <TextField
                                         id="outlined-basic"
                                         className='textField'
@@ -311,9 +322,9 @@ class CustomerDetails extends Component {
                                         value={this.state.userName}
                                         onChange={(event) => this.handleValueChange(event)}
                                         disabled={this.state.formfilled} />
-                                    {errors.login.length > 0 && <span className="error">{errors.login}</span>}
+                                    {errors.userName.length > 0 && <span className="error">{errors.userName}</span>}
                                 </div>
-                                <div className='password'>
+                                <div className='phonenumber'>
                                     <TextField
                                         id="outlined-basic"
                                         className='textField'
