@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React,{ Component } from "react";
 import customer from '../../service/service'
 
 class customerBookDetails extends Component {
@@ -6,17 +6,15 @@ class customerBookDetails extends Component {
         super(props)
 
         this.state = {
-            userName: '',
-            password: ''
+            item: this.props.location.state.data,
+            divHide:true
         }
-        new customer().getCustomer(this.state).then((data) => {
-            console.log(data)
-        })
+        console.log("dffddddddddd",this.state.item)
     }
     
     render() {
-        let book = new customer().getCustomer(this.state)
         var Books = this.state.item.map((item, i) => {
+            console.log(item);
             return (
                 <div>
                     <div className="divHide" style={{ display: this.state.divHide ? 'block' : 'none' }}>
@@ -32,7 +30,12 @@ class customerBookDetails extends Component {
                     </div>
                 </div>
             )
-        });
+       });
+       return(
+           <div>{Books}</div>
+           
+       )
     }
 
 }
+export default (customerBookDetails)

@@ -2,7 +2,7 @@ import Axios from "axios"
 // import {postAxios,getAxios} from ''
 export default class Service {
     constructor() {
-        this.Url = "http://localhost:3000/";
+        this.Url = "http://192.168.0.140:3000/";
     }
     getAllBooks() {
         return Axios({
@@ -24,6 +24,7 @@ export default class Service {
             });
     }
     customerDetails(details) {
+        console.log("derrtetyy",details)
         return Axios({
             method: 'POST',
             url: this.Url + 'customerDetails',
@@ -42,14 +43,16 @@ export default class Service {
                 return result;
             });
     }
-    // getCustomer(data) {
-    //     return Axios({
-    //         method: 'GET',
-    //         url: this.Url+ 'getCustomer',
-    //         data: loginDetails
-    //     })
-    //         .then(result => {
-    //             return result;
-    //         });
-    // }
+    getCustomerDetails(details) {
+        console.log("login....",details)
+        return Axios({
+            method: 'POST',
+            url: this.Url + `getCustomer`,
+            data: details
+        })
+            .then(result => {
+                console.log("result",result.data.result)
+                return result.data.result;
+            });
+    }
 }  
