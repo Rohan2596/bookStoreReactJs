@@ -51,6 +51,9 @@ class OrderPlaced extends Component {
                     <Button variant="contained" className="button1" color="primary" style={{ marginBottom: "3%" }} onClick={()=>{this.redirectToDashboard()}} >
                         Continue Shopping
                 </Button>
+                <Button variant="contained" color="primary" style={{ marginBottom: "3%",marginLeft:"13%"}} onClick={()=>{this.redirectToDashboard()}} >
+                       LOGIN
+                </Button>
                 </div>
             </div>
         );

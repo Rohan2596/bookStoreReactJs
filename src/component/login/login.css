@@ -1,0 +1,19 @@
+.detailsContactsLogin{
+    display: inline-block;
+    position: fixed;
+    top: 0px;
+    bottom: 10%;
+    /* margin-top: 8%; */
+    border: 1px rgb(74,139,50);
+    left: 0;
+    right: 0;
+    padding-top: 5%;
+    padding-bottom: 11%;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 41%;
+    /* padding: 7%; */
+    height: 100px;
+    margin: auto;
+    background-color: rgb(253,255,255);
+}
